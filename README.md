@@ -1,4 +1,4 @@
-#Course Notes for STAT230 at UWaterloo
+# Course Notes for STAT230 at UWaterloo
 
 Notes taken throughout the term, put into a consistent and understandable
 format. Made for anyone to use freely.
