@@ -1,0 +1,84 @@
+% 
+% (c) Joshua Allum
+%
+%% This program can be redistributed and/or modified under the terms
+%% of the LaTeX Project Public License Distributed from CTAN archives
+%% in directory macros/latex/base/lppl.txt.
+% 
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mathtext}
+    [2017/03/04 v0.01 LaTeX package for math textbooks]
+
+\RequirePackage[many]{tcolorbox}
+% ------------------------------------------------------ %
+% Set up colored boxes
+
+% Numbered example environment
+\newtcolorbox[auto counter, number within = section]{example}{
+    colback=green!15!white,
+    colframe=green!15!white,
+    outer arc=0pt,
+    title=Example~\thetcbcounter,
+    coltitle=black!,
+    toptitle=2mm,
+    fonttitle=\bfseries\large,
+    breakable}
+
+% Numbered theorem environment
+\newtcolorbox[auto counter, number within=section]{theorem}{
+    colback=blue!10!white,
+    colframe=blue!10!white,
+    outer arc=0pt,
+    title=Theorem~\thetcbcounter,
+    coltitle=black!,
+    toptitle=2mm,
+    fonttitle=\bfseries\large,
+    breakable}
+
+% Grey theory environment
+\newtcolorbox{theory}[1]{
+    colback=black!5!white,
+    colframe=black!5!white,
+    outer arc=0pt,
+    title=#1,
+    coltitle=black!,
+    toptitle=2mm,
+    fonttitle=\bfseries\large,
+    breakable}
+    
+% Yellow information environment
+\newtcolorbox{info}{
+    colback=yellow!20!white,
+    colframe=yellow!20!white,
+    outer arc=0pt,
+    breakable}
+% ------------------------------------------------------ %
+
+% ------------------------------------------------------ %
+% Create proof environment
+\newcounter{proof}[section]
+\newenvironment{proof}{\refstepcounter{proof}\par\medskip
+   \noindent\textbf{Proof~\thesection.\theproof:}\rmfamily\par\medskip\noindent}{\medskip}
+% ------------------------------------------------------ %
+
+% ------------------------------------------------------ %
+% Set up helpful math functions and statistical distributions
+\newcommand*{\underuparrow}[1]{\underset{\color{red}{\uparrow}}{#1}}
+\newcommand*{\for}{\ensuremath{\text{ for }}}
+\newcommand*{\all}{\ensuremath{\text{all }}}
+\newcommand*{\dist}{\ensuremath{\sim}}
+\newcommand{\hype}{\mathop{Hypergeometric}}
+\newcommand*{\bino}[2]{\mathop{Binomial(#1,#2)}}
+\newcommand*{\nbino}[2]{\mathop{Negative Binomial(#1,#2)}}
+\newcommand*{\nbin}[2]{\mathop{NB(#1,#2)}}
+\newcommand*{\geom}[1]{\mathop{Geometric(#1)}}
+\newcommand*{\sn}[2]{\ensuremath{{#1}{\times}10^{#2}}}
+
+\newcommand*{\union}{\cup}
+\newcommand*{\intersect}{\cap}
+\newcommand*{\given}{\ensuremath{\vert}}
+
+\newcommand*{\sS}{\ensuremath{\mathbb{S}}}
+\newcommand*{\sR}{\ensuremath{\mathbb{R}}}
+
+% ------------------------------------------------------ %

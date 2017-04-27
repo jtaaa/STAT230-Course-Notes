@@ -1,0 +1,27 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\RequirePackage[margin=1in]{geometry}
+\usepackage{mathtext}
+\usepackage{amssymb}
+\tcbuselibrary{breakable}
+
+% ------------------------------------------------------ %
+% Set up header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{ - #1}}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancyhf{}
+\fancyhead[L]{\leftmark\rightmark}
+\fancyhead[R]{Page \thepage}
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \rhead{Page \thepage}
+}
+% ------------------------------------------------------ %
+
+\begin{document}
+\include{Chapter1}
+\include{Chapter2}
+\end{document}
