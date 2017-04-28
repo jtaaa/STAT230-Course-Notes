@@ -1,0 +1,34 @@
+\chapter{Counting Techniques}
+\section{Counting Arguments}
+If we have a sample space, \sS, of some experiment that has a \textbf{uniform distribution} (all sample points are equally likely), then we can calculate the probability of a compound event $A$ as the number of sample points in $A$ divided by the total number of sample points.
+\[
+    P(A) = \frac{k}{n}
+\]
+where $k$ is the number of sample points in $A$ and $n$ is the total number of sample points in the sample space.
+\subsection*{Addition Rule}
+Consider we can perform process 1 in $p$ ways and process 2 in $q$ ways. Suppose we want to do process~1 \textbf{or} process~2 \textbf{but not both}, then there are $p + q$ ways to do so.
+\begin{example}
+Suppose a keyboard only has 26 letters and 20 special characters (!\%\#\$), there are 46 ways in which a typist may type a \textbf{single} character. (Process 1: typing a letter. Process 2: typing a special character).
+\end{example}
+\subsection*{Multiplication Rule}
+Again, consider we can perform process~1 in $p$ ways and process~2 in $q$ ways. Suppose we want to do process~1 \textbf{and} process~2, then there are $p \times q$ ways to do so. This is because \textbf{for each way} of doing process~1 we can do process~2 in $q$ ways.
+\begin{example}
+Suppose the same typist with the same keyboard wants to type a single letter \textbf{and} a single special character. The typist can do so in 520 ways, since there are 26 ways to select the letter and \textbf{for each} possible letter selection there are 20 possible special character selections.
+\end{example}
+\begin{info}
+Try to associate \textbf{OR} and \textbf{AND} with \textbf{addition} and \textbf{multiplication} respectively in your mind.
+\end{info}
+\begin{info}
+ Often times, \textbf{OR}'s and \textbf{AND}'s are not explicit or obvious so you must re-word your problem to identify implicit \textbf{OR}'s and \textbf{AND}'s.
+\end{info}
+\begin{example}
+A young boy gets to pick 2 toys from a store for his birthday. How many ways can he pick 2 toys if the store contains 12 toys? He may pick the same toy multiple times and picks the toys at random.
+\tcblower
+We can re-word this problem as follows: A young boy selects one of 12 toys \textbf{and} again, selects one of 12 toys. Thus there are $12 \times 12 = 144$ ways in which he can select 2 toys. Furthermore, we have that since selections are random, each selection is equally likely. So the probability that the boy selects any pair of toys is 1/144.
+\end{example}
+\begin{info}
+In this case the boy was allowed to select the same toy more than once. This is often referred to as \textbf{with replacement}. The addition and multiplication rules are generally sufficient to find probability of processes with replacement but if processes occur without replacement solutions become more complex and other techniques are often used.
+\end{info}
+\begin{info}
+The phrase \textbf{at random} or \textbf{uniformly}, indicates that each point in the sample space is equally likely.
+\end{info}
