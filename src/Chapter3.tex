@@ -32,3 +32,15 @@ In this case the boy was allowed to select the same toy more than once. This is 
 \begin{info}
 The phrase \textbf{at random} or \textbf{uniformly}, indicates that each point in the sample space is equally likely.
 \end{info}
+\begin{example}
+Consider a farmer with 500 different seeds. How many ways can he select 3 seeds randomly to plant?
+\tcblower
+We can re-word this problem to become: A farmer selects one seed from 500 \textbf{and} then selects one seed of 499 \textbf{and} then one seed of 498. So there are $500 \times 499 \times 498$ ways to do so.
+\par\bigskip
+Now, how many ways can he select 5 and 50 seeds randomly?
+\par\medskip
+He can select 5 seeds in $500 \times 499 \times 498 \times 497 \times 496$ ways and 50 seeds in $500 \times \cdots \times 451$ ways.
+\end{example}
+\begin{info}
+Generally, if there are $n$~ways of doing a process and it is done $k$~times \textbf{without replacement}, that is you can only do the process a specific way once, there are $n \times \cdots \times (n-k+1)$ ways to do it.
+\end{info}
