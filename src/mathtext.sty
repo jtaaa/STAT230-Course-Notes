@@ -10,6 +10,7 @@
     [2017/03/04 v0.01 LaTeX package for math textbooks]
 
 \RequirePackage[many]{tcolorbox}
+\RequirePackage{multido}
 % ------------------------------------------------------ %
 % Set up colored boxes
 
@@ -77,9 +78,23 @@
 \newcommand*{\union}{\cup}
 \newcommand*{\intersect}{\cap}
 \newcommand*{\given}{\ensuremath{\vert}}
+\newcommand*{\comp}{\bar}
 
 \newcommand{\ssep}{\mid}
 \newcommand*{\sS}{\ensuremath{\mathbb{S}}}
 \newcommand*{\sR}{\ensuremath{\mathbb{R}}}
+
+\newcommand*{\pboxes}[1]{
+\ifnum #1 = 0
+    \raisebox{-2pt}{
+        \framebox(12,12){}\framebox(12,12){}%
+        \framebox(24,12){$\cdots$}%
+        \framebox(12,12){}\framebox(12,12){}}
+\else 
+    \raisebox{-2pt}{\multido{}{#1}{\framebox(12,12){}}}
+\fi
+}
+
+\newcommand*{\pbox}[1]{\raisebox{-2pt}{\framebox(12,12){#1}}\ignorespaces}
 
 % ------------------------------------------------------ %
