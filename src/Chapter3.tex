@@ -44,3 +44,73 @@ He can select 5 seeds in $500 \times 499 \times 498 \times 497 \times 496$ ways 
 \begin{info}
 Generally, if there are $n$~ways of doing a process and it is done $k$~times \textbf{without replacement}, that is you can only do the process a specific way once, there are $n \times \cdots \times (n-k+1)$ ways to do it.
 \end{info}
+\section{Counting Arrangements}
+When the sample space of a process is a set of arrangements of elements, like~$\{\,abc, acb, bac, bca, cab, cba\,\}$, the sample points are called the \textbf{permutations}. Assuming all $n$ elements we are arranging are unique, how many sample points are there?
+\smallskip\par
+Consider trying to fill $n$ boxes: \pboxes{0}.
+We have $n$ ways to fill the first box (each element can go in the first box), \textbf{and} we have $(n-1)$ ways to fill the second box, \textbf{and} so on until we have 1 way to fill the n\ts{th}~box. So there are $n \times (n-1) \times \cdots \times 1$ total permutations in the sample space.
+\begin{example}
+Consider the letters of the word ``fiesta''. A baby (who cannot spell) randomly rearranges the letters of the word. What is the probability that ``fiesta'' is the outcome?
+\tcblower
+There are six boxes to fill:\pboxes{6}.
+We have 6 ways to fill the first position, 5 ways to fill the second and so on until we have 1 way to fill the 6\ts{th} position. The number of points in the sample space is $6 \times 5 \times 4 \times 3 \times 2 \times 1 = 720$. So the probability of each outcome in the sample space is 1/720.
+\end{example}
+\begin{example}
+Consider the letters of the word ``snake''. 
+If arranged randomly what is the probability that the word formed begins with a vowel?
+\tcblower
+There are five boxes to fill: \pboxes{5}. There are two ways to fill the first box: 
+\begin{center}
+\pbox{a}\pboxes{4} and \pbox{e}\pboxes{4}
+\end{center}
+\textbf{and} for each of these ways there are four remaining boxes to fill. The number of ways to fill the 4 remaining boxes is $4 \times 3 \times 2 \times 1 = 24$ so the total number of outcomes in which the first letter is a vowel is $2 \times 24 = 48$. Therefore, the probability of the event occurring is $\frac{48}{\text{number of sample points}}$.
+\smallskip\par
+The five boxes can be filled by any letter to obtain a point in the sample space, so there are $5 \times 4 \times 3 \times 2 \times 1 = 120$ sample points. So the probability of the event occurring is $48/120 = 4/15$.
+\end{example}
+\begin{example}
+Suppose we have 7 meals to distribute randomly to 7 people (one each). Three of the meals are gluten free and the other four are not. Of the 7 people, two of them cannot eat gluten. How many ways are there to distribute the meals without giving gluten to someone who cannot eat it?
+\tcblower
+We can liken this to the boxes example with each person being a box. Let the first two boxes be the people who cannot eat gluten. We have
+\begin{center}
+\pboxes{7}
+\end{center}
+Since we cannot place a gluten meal in boxes~1 or~2, we have that we have 3 ways to fill box~1 then 2 ways to fill box~2. So there are 6 ways distribute meals to the gluten-free people. We have
+\begin{center}
+\pbox{G}\pbox{G}
+\pboxes{5}
+\end{center}
+Now there are 5 boxes to be filled with any of 5 meals. So there are $5 \times 4 \times 3 \times 2 \times 1 = 120$ ways to distribute the meals to the other 5 people. This is an implicit \textbf{and} statement, thus there are $6 \times 120 = 720$ ways to distribute the meals.
+\end{example}
+\section{Notations}
+Because some calculations occur very frequently in statistics we define a notation that helps us to deal with such problems.
+\subsection*{Factorial}
+We define $n!$ for any natural number $n$ to be
+\[
+    n! = n \times (n-1) \times (n-2) \times \cdots \times 1
+\]
+and in order to maintain mathematical consistency we define $0!$ to be 1.
+\subsection*{$\mathbf{n}$ to $\mathbf{k}$ Factors}
+We define $n^{(k)}$ to be
+\[
+    n^{(k)} = n \times (n-1) \times \cdots \times (n-k+1) = \frac{n!}{(n-k)!}
+\]
+This is the number of arrangements of length $k$ using each element, of $n$ possible elements, at most once.
+\subsection*{Power of}
+As in ordinary mathematics $n^k = \underbrace{n \times n \times \cdots \times n}_k$. This represents the number of arrangements that can be made of length $k$ using each element, of $n$ elements, as often as we wish (with replacement).
+\begin{info}
+For many problems it is simply impractical to try to count the number of cases by conventional means because of how big the numbers become. Notations such as $n!$ and $n^k$ allow us to deal with these large numbers effectively.
+\end{info}
+\begin{example}
+An evil advertising company randomly chooses 7-digit phone numbers to call to try to sell products. Find the probabilities of the following events:
+\begin{itemize}[noitemsep]
+    \item A: the number is your phone number
+    \item B: the first three number are less than 5
+    \item C: the first and last numbers match your phone number
+\end{itemize}
+Now assume that all 7-digits are unique (chosen without replacement):
+\begin{itemize}[noitemsep]
+    \item D: the number is 210-3869
+    \item E: the first three number are less than 5
+    \item F: the first and last numbers are 1 and 2 respectively
+\end{itemize}
+\end{example}
