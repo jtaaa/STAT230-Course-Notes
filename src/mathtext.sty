@@ -77,7 +77,7 @@
 
 \newcommand*{\union}{\cup}
 \newcommand*{\intersect}{\cap}
-\newcommand*{\given}{\ensuremath{\vert}}
+\newcommand*{\given}{\vert}
 \newcommand*{\comp}{\bar}
 
 \newcommand{\ssep}{\mid}
@@ -87,11 +87,11 @@
 \newcommand*{\pboxes}[1]{
 \ifnum #1 = 0
     \raisebox{-2pt}{
-        \framebox(12,12){}\framebox(12,12){}%
+        \leavevmode\unskip\framebox(12,12){}\framebox(12,12){}%
         \framebox(24,12){$\cdots$}%
-        \framebox(12,12){}\framebox(12,12){}}
+        \framebox(12,12){}\framebox(12,12){}}\ignorespaces
 \else 
-    \raisebox{-2pt}{\multido{}{#1}{\framebox(12,12){}}}
+    \raisebox{-2pt}{\leavevmode\unskip\multido{}{#1}{\framebox(12,12){}}}\ignorespaces
 \fi
 }
 
