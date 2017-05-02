@@ -47,21 +47,21 @@ Generally, if there are $n$~ways of doing a process and it is done $k$~times \te
 \section{Counting Arrangements}
 When the sample space of a process is a set of arrangements of elements, like~$\{\,abc, acb, bac, bca, cab, cba\,\}$, the sample points are called the \textbf{permutations}. Assuming all $n$ elements we are arranging are unique, how many sample points are there?
 \smallskip\par
-Consider trying to fill $n$ boxes: \pboxes{0}.
+Consider trying to fill $n$ boxes: \pboxes{0}\,.
 We have $n$ ways to fill the first box (each element can go in the first box), \textbf{and} we have $(n-1)$ ways to fill the second box, \textbf{and} so on until we have 1 way to fill the n\ts{th}~box. So there are $n \times (n-1) \times \cdots \times 1$ total permutations in the sample space.
 \begin{example}
 Consider the letters of the word ``fiesta''. A baby (who cannot spell) randomly rearranges the letters of the word. What is the probability that ``fiesta'' is the outcome?
 \tcblower
-There are six boxes to fill:\pboxes{6}.
+There are six boxes to fill: \pboxes{6}\,.
 We have 6 ways to fill the first position, 5 ways to fill the second and so on until we have 1 way to fill the 6\ts{th} position. The number of points in the sample space is $6 \times 5 \times 4 \times 3 \times 2 \times 1 = 720$. So the probability of each outcome in the sample space is 1/720.
 \end{example}
 \begin{example}
 Consider the letters of the word ``snake''. 
 If arranged randomly what is the probability that the word formed begins with a vowel?
 \tcblower
-There are five boxes to fill: \pboxes{5}. There are two ways to fill the first box: 
+There are five boxes to fill: \pboxes{5}\,. There are two ways to fill the first box: 
 \begin{center}
-\pbox{a}\pboxes{4} and \pbox{e}\pboxes{4}
+\pbox{a}\pboxes{4}\ and \pbox{e}\pboxes{4}
 \end{center}
 \textbf{and} for each of these ways there are four remaining boxes to fill. The number of ways to fill the 4 remaining boxes is $4 \times 3 \times 2 \times 1 = 24$ so the total number of outcomes in which the first letter is a vowel is $2 \times 24 = 48$. Therefore, the probability of the event occurring is $\frac{48}{\text{number of sample points}}$.
 \smallskip\par
@@ -102,15 +102,59 @@ For many problems it is simply impractical to try to count the number of cases b
 \end{info}
 \begin{example}
 An evil advertising company randomly chooses 7-digit phone numbers to call to try to sell products. Find the probabilities of the following events:
-\begin{itemize}[noitemsep]
-    \item A: the number is your phone number
-    \item B: the first three number are less than 5
-    \item C: the first and last numbers match your phone number
+\begin{itemize}[noitemsep, topsep=4pt plus 2pt minus 1pt]
+    \item $A$: the number is your phone number
+    \item $B$: the first three number are less than 5
+    \item $C$: the first and last numbers match your phone number
 \end{itemize}
 Now assume that all 7-digits are unique (chosen without replacement):
-\begin{itemize}[noitemsep]
-    \item D: the number is 210-3869
-    \item E: the first three number are less than 5
-    \item F: the first and last numbers are 1 and 2 respectively
+\begin{itemize}[noitemsep, topsep=4pt plus 2pt minus 1pt]
+    \item $D$: the number is 210-3869
+    \item $E$: the first three number are less than 5
+    \item $F$: the first and last numbers are 1 and 2 respectively
 \end{itemize}
+\tcblower
+$A$:\hspace{5mm}The initial sample space contains all the ways that one can select 7 numbers from the numbers~0 to~9 \textbf{with replacement}. There are 10 choices for each of the seven numbers, therefore the sample space contains $10^7$ points. Thus, since all points are equally likely, $P(A) = 1/10^7$.
+\par\smallskip
+$B$:\hspace{5mm}Now if the first three numbers are less than 5, there are 5 ways (0 to 4) to select each of the first three numbers and there are 10 ways to select each of the next four numbers. So there are $5^3 \times 10^4$ points in $B$. Therefore, $P(B) = \frac{5^3 \times 10^4}{10^7}$
+\par\smallskip
+$C$:\hspace{5mm}There is only one way to select the first number such that it matches your number and the same is true for the last number. Thus, we must only consider the middle digits. There are 10 choices each for the middle five numbers, so there are $10^5$ points in $C$. Therefore, $P(C) = 1/10^5$.
+\par\medskip
+$D$:\hspace{5mm}The new sample space contains all the ways that one can select 7 numbers from the numbers~0 to~9 \textbf{without replacement}. There are 10 choices for the first number, 9~for the second and so on until there are 4 choices for the last number. Thus, there are $10^{(7)}$ points in the sample space and since each is equally likely, $P(D) = 1/10^{(7)} = \frac{1}{10 \times 9 \times 8 \times 7 \times 6 \times 5 \times 4}$.
+\par\smallskip
+$E$:\hspace{5mm}If the first three numbers are less than five, there are 5 ways to select the first number, 4 for the second and 3 for the third, so there are $5^{(3)}$ ways to select the first 3 numbers. The next 4 digits may be selected from any of the 7 digits that were not used as one of the first 3. So there are $7^{(4)}$ ways to select the final four digits. Therefore, there are $5^{(3)} \times 7^{(4)}$ points in $E$. So, $P(E) = \frac{5^{(3)} \times 7^{(4)}}{10^{(7)}}$.
+\par\smallskip
+$F$:\hspace{5mm}There is only one way to select the first and last digits as 1 and 2 respectively, so we must only consider the middle 5 digits. The 5 digits are selected from 8 numbers without replacement, so there are $8^{(5)}$ ways to do this. Therefore, $P(F) = \frac{8^{(5)}}{10^{(7)}}$.
 \end{example}
+\section{Counting Subsets}
+In many problems, you will encounter a sample space, \sS, of some experiment that consists of fixed-length subsets of some set.
+\subsection*{Combinations}
+We define $\binom{n}{k}$ to be the number of subsets of size $k$ that can be selected from a set of $n$ elements. We have
+\[
+    \binom{n}{k} = \frac{n^{(k)}}{k!} = \frac{n!}{(n-k)!\,k!}
+\]
+It is read ``$n$ choose $k$''.
+\begin{theory}{Derivation of Choose}
+Suppose we have a set of~$n$ unique~elements and we wish to select a subset of size~$k$, such that $k \leq n$, and the elements of the subset are unique (selected without replacement). If we use the boxes metaphor we have $k$ empty boxes. 
+\[
+    \underbrace{\pboxes{0}}_k
+\]
+There are $n$ ways to select the first element of the subset, $(n-1)$ ways to select the second and so on until there are $(n-k+1)$ ways to select the k\ts{th} and last element.
+\par\medskip
+So there are $n^{(k)}$ ways to fill the $k$ boxes \textbf{but} note that some of the subsets will contain all the same elements as each other but in varying order. These subsets are not unique since we do not care for the arrangement of the items in a subset. Each unique subset can be arranged to form $k!$ permutations of its $k$ elements. Thus, the number of unique subsets, $\binom{n}{k}$, multiplied by the number of arrangements of each subset, $k!$, is $n^{(k)}$. Therefore, we have
+\[
+    \binom{n}{k} \times k! = n^{(k)}
+\]
+So it follows that
+\[
+    \binom{n}{k} = \frac{n^{(k)}}{k!}
+\]
+\end{theory}
+% ------------------------------------------------- %
+% Add tons of examples and stuff right about here
+%   |   |   |   |   |   |   |   |   |   |   |   |
+%   |   |   |   |   |   |   |   |   |   |   |   |
+%   V   V   V   V   V   V   V   V   V   V   V   V
+% (Give or take a few pt's) :0
+% ------------------------------------------------- %
+\section{Properties of }
