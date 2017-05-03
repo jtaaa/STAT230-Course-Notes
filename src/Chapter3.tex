@@ -1,4 +1,5 @@
 \chapter{Counting Techniques}
+% ------------------------------------------------- %
 \section{Counting Arguments}
 If we have a sample space, \sS, of some experiment that has a \textbf{uniform distribution} (all sample points are equally likely), then we can calculate the probability of a compound event $A$ as the number of sample points in $A$ divided by the total number of sample points.
 \[
@@ -44,6 +45,7 @@ He can select 5 seeds in $500 \times 499 \times 498 \times 497 \times 496$ ways 
 \begin{info}
 Generally, if there are $n$~ways of doing a process and it is done $k$~times \textbf{without replacement}, that is you can only do the process a specific way once, there are $n \times \cdots \times (n-k+1)$ ways to do it.
 \end{info}
+% ------------------------------------------------- %
 \section{Counting Arrangements}
 When the sample space of a process is a set of arrangements of elements, like~$\{\,abc, acb, bac, bca, cab, cba\,\}$, the sample points are called the \textbf{permutations}. Assuming all $n$ elements we are arranging are unique, how many sample points are there?
 \smallskip\par
@@ -81,6 +83,7 @@ Since we cannot place a gluten meal in boxes~1 or~2, we have that we have 3 ways
 \end{center}
 Now there are 5 boxes to be filled with any of 5 meals. So there are $5 \times 4 \times 3 \times 2 \times 1 = 120$ ways to distribute the meals to the other 5 people. This is an implicit \textbf{and} statement, thus there are $6 \times 120 = 720$ ways to distribute the meals.
 \end{example}
+% ------------------------------------------------- %
 \section{Notations}
 Because some calculations occur very frequently in statistics we define a notation that helps us to deal with such problems.
 \subsection*{Factorial}
@@ -88,15 +91,15 @@ We define $n!$ for any natural number $n$ to be
 \[
     n! = n \times (n-1) \times (n-2) \times \cdots \times 1
 \]
-and in order to maintain mathematical consistency we define $0!$ to be 1.
+and in order to maintain mathematical consistency we define $0!$ to be 1. This is the number of arrangements of $n$ possible unique elements, using each once.
 \subsection*{$\mathbf{n}$ to $\mathbf{k}$ Factors}
-We define $n^{(k)}$ to be
+We define $\tofact{n}{k}$ to be
 \[
-    n^{(k)} = n \times (n-1) \times \cdots \times (n-k+1) = \frac{n!}{(n-k)!}
+    \tofact{n}{k} = n \times (n-1) \times \cdots \times (n-k+1) = \frac{n!}{(n-k)!}
 \]
-This is the number of arrangements of length $k$ using each element, of $n$ possible elements, at most once.
+This is the number of arrangements of length $k$ using each element, of $n$ possible unique elements, at most once.
 \subsection*{Power of}
-As in ordinary mathematics $n^k = \underbrace{n \times n \times \cdots \times n}_k$. This represents the number of arrangements that can be made of length $k$ using each element, of $n$ elements, as often as we wish (with replacement).
+As in ordinary mathematics $n^k = \underbrace{n \times n \times \cdots \times n}_k$. This represents the number of arrangements that can be made of length $k$ using each element, of $n$ possible unique elements, as often as we wish (with replacement).
 \begin{info}
 For many problems it is simply impractical to try to count the number of cases by conventional means because of how big the numbers become. Notations such as $n!$ and $n^k$ allow us to deal with these large numbers effectively.
 \end{info}
@@ -120,18 +123,19 @@ $B$:\hspace{5mm}Now if the first three numbers are less than 5, there are 5 ways
 \par\smallskip
 $C$:\hspace{5mm}There is only one way to select the first number such that it matches your number and the same is true for the last number. Thus, we must only consider the middle digits. There are 10 choices each for the middle five numbers, so there are $10^5$ points in $C$. Therefore, $P(C) = 1/10^5$.
 \par\medskip
-$D$:\hspace{5mm}The new sample space contains all the ways that one can select 7 numbers from the numbers~0 to~9 \textbf{without replacement}. There are 10 choices for the first number, 9~for the second and so on until there are 4 choices for the last number. Thus, there are $10^{(7)}$ points in the sample space and since each is equally likely, $P(D) = 1/10^{(7)} = \frac{1}{10 \times 9 \times 8 \times 7 \times 6 \times 5 \times 4}$.
+$D$:\hspace{5mm}The new sample space contains all the ways that one can select 7 numbers from the numbers~0 to~9 \textbf{without replacement}. There are 10 choices for the first number, 9~for the second and so on until there are 4 choices for the last number. Thus, there are $\tofact{10}{7}$ points in the sample space and since each is equally likely, $P(D) = 1/\tofact{10}{7} = \frac{1}{10 \times 9 \times 8 \times 7 \times 6 \times 5 \times 4}$.
 \par\smallskip
-$E$:\hspace{5mm}If the first three numbers are less than five, there are 5 ways to select the first number, 4 for the second and 3 for the third, so there are $5^{(3)}$ ways to select the first 3 numbers. The next 4 digits may be selected from any of the 7 digits that were not used as one of the first 3. So there are $7^{(4)}$ ways to select the final four digits. Therefore, there are $5^{(3)} \times 7^{(4)}$ points in $E$. So, $P(E) = \frac{5^{(3)} \times 7^{(4)}}{10^{(7)}}$.
+$E$:\hspace{5mm}If the first three numbers are less than five, there are 5 ways to select the first number, 4 for the second and 3 for the third, so there are $\tofact{5}{3}$ ways to select the first 3 numbers. The next 4 digits may be selected from any of the 7 digits that were not used as one of the first 3. So there are $7^{(4)}$ ways to select the final four digits. Therefore, there are $5^{(3)} \times \tofact{7}{4}$ points in $E$. So, $P(E) = \frac{\tofact{5}{3} \times \tofact{7}{4}}{\tofact{10}{7}}$.
 \par\smallskip
-$F$:\hspace{5mm}There is only one way to select the first and last digits as 1 and 2 respectively, so we must only consider the middle 5 digits. The 5 digits are selected from 8 numbers without replacement, so there are $8^{(5)}$ ways to do this. Therefore, $P(F) = \frac{8^{(5)}}{10^{(7)}}$.
+$F$:\hspace{5mm}There is only one way to select the first and last digits as 1 and 2 respectively, so we must only consider the middle 5 digits. The 5 digits are selected from 8 numbers without replacement, so there are $8^{(5)}$ ways to do this. Therefore, $P(F) = \frac{\tofact{8}{5}}{\tofact{10}{7}}$.
 \end{example}
+% ------------------------------------------------- %
 \section{Counting Subsets}
 In many problems, you will encounter a sample space, \sS, of some experiment that consists of fixed-length subsets of some set.
 \subsection*{Combinations}
 We define $\binom{n}{k}$ to be the number of subsets of size $k$ that can be selected from a set of $n$ elements. We have
 \[
-    \binom{n}{k} = \frac{n^{(k)}}{k!} = \frac{n!}{(n-k)!\,k!}
+    \binom{n}{k} = \frac{\tofact{n}{k}}{k!} = \frac{n!}{(n-k)!\,k!}
 \]
 It is read ``$n$ choose $k$''.
 \begin{theory}{Derivation of Choose}
@@ -141,13 +145,13 @@ Suppose we have a set of~$n$ unique~elements and we wish to select a subset of s
 \]
 There are $n$ ways to select the first element of the subset, $(n-1)$ ways to select the second and so on until there are $(n-k+1)$ ways to select the k\ts{th} and last element.
 \par\medskip
-So there are $n^{(k)}$ ways to fill the $k$ boxes \textbf{but} note that some of the subsets will contain all the same elements as each other but in varying order. These subsets are not unique since we do not care for the arrangement of the items in a subset. Each unique subset can be arranged to form $k!$ permutations of its $k$ elements. Thus, the number of unique subsets, $\binom{n}{k}$, multiplied by the number of arrangements of each subset, $k!$, is $n^{(k)}$. Therefore, we have
+So there are $\tofact{n}{k}$ ways to fill the $k$ boxes \textbf{but} note that some of the subsets will contain all the same elements as each other but in varying order. These subsets are not unique since we do not care for the arrangement of the items in a subset. Each unique subset can be arranged to form $k!$ permutations of its $k$ elements. Thus, the number of unique subsets, $\binom{n}{k}$, multiplied by the number of arrangements of each subset, $k!$, is $\tofact{n}{k}$. Therefore, we have
 \[
-    \binom{n}{k} \times k! = n^{(k)}
+    \binom{n}{k} \times k! = \tofact{n}{k}
 \]
 So it follows that
 \[
-    \binom{n}{k} = \frac{n^{(k)}}{k!}
+    \binom{n}{k} = \frac{\tofact{n}{k}}{k!}
 \]
 \end{theory}
 % ------------------------------------------------- %
@@ -155,6 +159,45 @@ So it follows that
 %   |   |   |   |   |   |   |   |   |   |   |   |
 %   |   |   |   |   |   |   |   |   |   |   |   |
 %   V   V   V   V   V   V   V   V   V   V   V   V
-% (Give or take a few pt's) :0
+% (Give or take a few pt's) :0 #;target
 % ------------------------------------------------- %
-\section{Properties of }
+% ------------------------------------------------- %
+\section{Properties of Combinations}
+Here are a few properties of $\binom{n}{k}$.
+\begin{itemize}
+    \item $\tofact{n}{k} = \frac{n!}{(n-k)!} = n(n-1)^{k-1}$ for $k \geq 1$
+    \item $\binom{n}{k} = \frac{n!}{(n-k)!\,k!} = \frac{\tofact{n}{k}}{k!}$
+    \item $\binom{n}{k} = \binom{n}{n-k}$ for all $0 \leq k \leq n$
+    \item $\binom{n}{0} = \binom{n}{n} = 1$
+    \item $(1 + x)^n = \binom{n}{0} + \binom{n}{1}x + \binom{n}{2}x^2 + \cdots + \binom{n}{n}x^n$ \hfill (Binomial Theorem)
+\end{itemize}
+% ------------------------------------------------- %
+\section{Counting Arrangements of Set with Repeated Elements}
+Thus far we have only discussed counting arrangements of unique items. Now, we consider a case in which we want to count the number of unique arrangements of size $k$ of a set of $n$ elements that are not necessarily unique.
+\par\smallskip
+% Consider we have a set of $n$~elements of $k$~unique types, with $n_i$~elements of type~$i$, for~$i~=~1,2,\ldots,k$, such that $n_1 + \cdots + n_k = n$. The number of different ways of selecting an arrangement of size $n$ that uses all symbols is:
+Consider we have a set of $n$~elements with $k$ of those elements being unique. Let $n_i$ be the number of appearances of the $i$\ts{th} element of the $k$ unique elements. Thus, $n_1 + \cdots + n_k = n$. The number of different ways of selecting an arrangement of size $n$ that uses all symbols is:
+\[
+    \binom{n}{n_1} \times \binom{n - n_1}{n_2} \times \binom{n - n_1 - n_2}{n_3} \times \cdots \times \binom{n_k}{n_k} = \frac{n!}{n_1!\,n_2!\,n_3!\cdots n_k!}
+\]
+\begin{theory}{Derivation}
+Suppose we have a set of $n$~elements with $k$~being unique. Let the $k$ unique items be labelled $u_1$~to~$u_k$ and let $n_i$ be the number of appearance of $u_i$ in the set of $n$ elements. We want to form an arrangement of length $n$ so using the boxes metaphor we have
+\[\underbrace{\pboxes{0}}_n\]
+We must use each of the $n$ elements once so we must select $n_1$ boxes to fill with $u_1$'s. This can be done in $\binom{n}{n_1}$ ways. Next, we must select $n_2$ of the remaining $n-n_1$ boxes to fill with $u_2$'s, $n_3$ of the remaining $n-n_1-n_2$ boxes to fill with $u_3$'s, and so on until we must select $n_k$ of the $n-n_1-n_2-\cdots-n_{k+1} = n_k$ remaining boxes to fill with $u_k$'s. Therefore, there are
+\[
+    \binom{n}{n_1} \times \binom{n - n_1}{n_2} \times \cdots \times \binom{n_k}{n_k} =
+    \frac{n!}{\cancel{(n-n_1)!}\,n_1!} \times \frac{\cancel{(n-n_1)!}}{(n-n_1-n_2)!\,n_2!} \times \cdots \times \frac{(n_{k-1} + n_k)!}{\cancel{n_k!}\,n_{k-1}!} \times \frac{\cancel{n_k!}}{0!\,n_k!}
+\]
+ways, which simplifies to,
+\[
+    \frac{n!}{n_1!\,n_2!\,n_3!\cdots n_k!}
+\]
+to do so.
+% ------------------------------------------------- %
+% Add tons of examples and stuff right about here
+%   |   |   |   |   |   |   |   |   |   |   |   |
+%   |   |   |   |   |   |   |   |   |   |   |   |
+%   V   V   V   V   V   V   V   V   V   V   V   V
+% (Give or take a few pt's) :0 #;target
+% ------------------------------------------------- %
+\end{theory}
