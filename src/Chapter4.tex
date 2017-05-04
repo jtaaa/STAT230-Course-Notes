@@ -1,0 +1,41 @@
+\chapter{Probability Rules}
+\section{General Rules}
+Here are a few basic rules of probabilities. They should be relatively straightforward.
+\begin{theorem}
+For a sample space, \sS, the probability of a simple event in \sS~occurring is 1. That is
+\[
+    P(\sS) = 1
+\]
+\end{theorem}
+\begin{proof}
+\[
+    P(\sS) = \sum_{a \in \sS} P(a) = \sum_{\all a} P(a)
+\]
+\end{proof}
+\begin{theorem}
+Any event $A$ in a sample space has a probability between 0 and 1 inclusive. That is
+\[
+    0 \leq P(A) \leq 1 \for\all A\subseteq\sS
+\]
+\end{theorem}
+\begin{proof}
+Note that $A$ is a subset of \sS, so
+\[
+    P(A) = \sum_{a \in A} P(a) \leq \sum_{a \in \sS} P(a) = 1
+\]
+Now, recall that $P(a) \geq 0$ for any sample point $a$ by our probability model. Thus, since $P(A)$ is the sum of non-negative real numbers, $P(A) \geq 0$. So we have
+\[
+    1 \leq P(A) \leq 1
+\]
+\end{proof}
+\begin{theorem}
+If $A$ and $B$ are two events such that $A \subseteq B$, that is all the sample points in $A$ are also in $B$, then 
+\[
+    P(A) \leq P(B)
+\]
+\end{theorem}
+\begin{proof}
+\[
+    P(A) = \sum_{a \in A} P(a) \leq \sum_{a \in B} P(a) = P(B)
+\]
+\end{proof}
