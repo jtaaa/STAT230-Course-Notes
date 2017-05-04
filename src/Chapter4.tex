@@ -39,3 +39,83 @@ If $A$ and $B$ are two events such that $A \subseteq B$, that is all the sample 
     P(A) = \sum_{a \in A} P(a) \leq \sum_{a \in B} P(a) = P(B)
 \]
 \end{proof}
+% ------------------------------------------------- %
+\section{Venn Diagrams}
+As we have seen already, it is helpful to think of events in a sample space as subsets of the sample space. Consider a sample space, $\sS = \{\, 1,2,3,4,5,6 \,\}$. A number is picked at random, let $E$ be the event that the number is even. We can think of $E$ as the subsets of \sS, $\{\, 2,4,6 \,\}$ and the probability of $E$ is the probability of any sample points in $A$ occurs, that is 2, 4, or 6 is selected. We can represent the relationships of events in the sample space using Venn diagrams.
+\par\smallskip
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\draw (0,0) rectangle (6,4) node[below left] {$\sS$};
+\filldraw[fill=blue!5] (3,2) circle (1.5) node {$E$};
+\end{tikzpicture}
+\caption{Single event $E$} \label{fig:Single event}
+\end{figure}
+Now, assuming the area of $E$ is half the area of \sS, we have that the probability of $E$ is the probability that a randomly chosen point on the area of \sS~will be within $E$.
+
+Consider now we let $G = \{\, 4,5,6 \,\}$ be the event that that the number selected is greater than or equal to 4. We have
+\par\smallskip
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+
+\def\eventE{(2,2) circle (1.5)}
+\def\eventG{(4,2) circle (1.5)}
+
+\draw (0,0) rectangle (6,4) node[below left] {$\sS$};
+
+\begin{scope}[fill opacity=0.5]
+\fill[blue!10] \eventE;
+\fill[red!10] \eventG;
+\end{scope}
+
+\draw \eventE node {$E$};
+\draw \eventG node {$G$};
+
+\end{tikzpicture}
+\caption{Events $E$ and $G$} \label{fig:Events E and G}
+\end{figure}
+The total shaded region of the Venn diagram, $E \union G$, contains all the sample points of $E$ and $G$. It is the event that any outcome in either $E$ or~$G$, or both, occurs. Thus, $E \union G$ is the event that $E$, $G$ or~both, occurs. Similarly, the union of three events is the event that at least one of the three events occur.
+
+Consider now the intersection $E \intersect G$. It is the set of all the points that are in both $E$ and~$G$, $\{\, 4,6 \,\}$. Thus, it is the event that an outcome in both $E$ and $G$ occurs. So $E \intersect G$ is the event that $E$ and~$G$ both occur. 
+\begin{info}
+The sets $A \intersect B$ and similarly $A \intersect B \intersect C$ are often denoted as $AB$ and $ABC$ respectively.
+\end{info}
+Finally, the unshaded space in Figure 4.1 is the set of all outcomes that are not in~$E$. It is the complement of $E$ and is denoted by $\comp{E}$. It is the event that $E$ does not occur.
+\begin{info}
+Note that the complement of \sS~is the null set, that is $\comp{\sS} = \nullset$, and has a probability of 0.
+\end{info}
+% ------------------------------------------------- %
+\section{De Morgan's Laws}
+\begin{theorem}
+The following are De Morgan's Laws:
+\begin{enumerate}
+    \item $\comp{A \union B} = \comp{A} \intersect \comp{B}$
+    \item $\comp{A \intersect B} = \comp{A} \union \comp{B}$
+\end{enumerate}
+\end{theorem}
+% Include a proof here #;target
+\section{Rules for Unions of Events}
+Recall Figure 4.2, copied below.
+\par
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+
+\def\eventE{(2,2) circle (1.5)}
+\def\eventG{(4,2) circle (1.5)}
+
+\draw (0,0) rectangle (6,4) node[below left] {$\sS$};
+
+\begin{scope}[fill opacity=0.5]
+\fill[blue!10] \eventE;
+\fill[red!10] \eventG;
+\end{scope}
+
+\draw \eventE node {$E$};
+\draw \eventG node {$G$};
+
+\end{tikzpicture}
+\repeatcaption{fig:Events E and G}{Events E and G}
+\end{figure}
+We can see that the area of $E \union G$ is not simply the sum of the areas of $E$ and~$G$. So we have that the probability of $E \union G$ is not simply the sum of the probability of $E$ and $G$.
