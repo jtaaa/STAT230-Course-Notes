@@ -158,10 +158,11 @@ Now consider the case of the union of three events.\par
 \end{tikzpicture}
 \caption{Three events} \label{fig:Three events}
 \end{figure}
-The area of the union once again is not simply the sum of the areas. Instead we can reason out that when we add the three areas we include the area of $E \intersect G$, $G \intersect F$, and $F \intersect E$ twice each and $E \intersect G \intersect F$ three times. The sum of these doubly counted areas also includes the area $E \intersect G \intersect F$ three times. Thus, we can subtract the area of the doubly counted areas but this also subtracts the area of $E \intersect G \intersect F$ three times leaving this area unaccounted for. Therefore we then add the area of $E \intersect G \intersect F$ to find the complete area of $E \union G \union F$.
+Let $A_I$ be the area on the Venn diagram of the event $I$. The area of the union once again is not simply the sum of the areas ($A_E + A_G + A_F$). Instead we can reason out that when we add the three areas we include $A_{E \intersect G}$, $A_{G \intersect F}$, and $A_{F \intersect E}$ twice each and $A_{E \intersect G \intersect F}$ three times. The sum of these doubly counted areas ($A_{E \intersect G} + A_{G \intersect F} + A_{F \intersect E}$) also includes $A_{E \intersect G \intersect F}$ three times. Thus, when we subtract the area of the doubly counted segments, $A_{E \intersect G \intersect F}$ is also subtracted three times leaving this area unaccounted for. Therefore we then add $A_{E \intersect G \intersect F}$ to find the complete area of $E \union G \union F$.
 \begin{theorem}
 For any events, $A$, $B$ and $C$, in a sample space, we have
 \[
     P(A \union B \union C) = P(A) + P(B) + P(C) - P(A \intersect B) - P(B \intersect C) - P(C \intersect A) + P(A \intersect B \intersect C)
 \]
 \end{theorem}
+\subsection*{Mutually Exclusive Events}
