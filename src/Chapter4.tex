@@ -165,4 +165,79 @@ For any events, $A$, $B$ and $C$, in a sample space, we have
     P(A \union B \union C) = P(A) + P(B) + P(C) - P(A \intersect B) - P(B \intersect C) - P(C \intersect A) + P(A \intersect B \intersect C)
 \]
 \end{theorem}
-\subsection*{Mutually Exclusive Events}
+\section{Mutually Exclusive Events}
+Events $A$ and $B$ are mutually exclusive if and only if $A \intersect B = \nullset$. More simply, the events $A$ and $B$ cannot both occur in one experiment because they share no points in common and only one sample point is achieved.
+\par\smallskip
+In general, events $A_1,A_2,A_3,\ldots,A_n$ are mutually exclusive if and only if $A_i \intersect A_j = \nullset \for\all i \neq j$. This means that at most one of these events may occur in any one experiment.
+\subsection*{Probability of the Unions of Mutually Exclusive Events}
+Consider the Venn diagram of two mutually exclusive events, $E$ and $G$.
+\begin{figure}[htp]
+\centering
+\begin{tikzpicture}
+
+\def\eventE{(2,2) circle (1.5)}
+\def\eventG{(5.5,2) circle (1.5)}
+
+\draw (0,0) rectangle (7.5,4) node[below left] {$\sS$};
+
+\begin{scope}[fill opacity=0.5]
+\fill[blue!10] \eventE;
+\fill[red!10] \eventG;
+\end{scope}
+
+\draw \eventE node {$E$};
+\draw \eventG node {$G$};
+
+\end{tikzpicture}
+\caption{Two mutually exclusive events} \label{fig:Two mutually exclusive events}
+\end{figure}
+Clearly the probability of the intersection of two mutually exclusive events is 0, since it doesn't contains any sample points. So we have 
+\[
+    P(E \intersect G) = 0    
+\]
+Another intrinsic property of mutually exclusive events that we can see on a Venn diagram is that the area of $E \union G$ is the sum of the areas of $E$ and $G$. Therefore, unlike in previous examples, the probability of $E \union G$ is the sum of the probabilities of $E$ and $G$.
+\begin{theorem}
+For mutually exclusve events, $A$ and $B$, in a sample space, we have
+\[
+    P(A \union B) = P(A) + P(B)
+\]
+\end{theorem}
+\begin{theorem}
+More generally for $n$ mutually exclusive events, $A_1,A_2,\ldots,A_n$, in a sample space, we have
+\[
+    P(A_1 \union A_2 \union \cdots \union A_n) = P(A_1) + P(A_2) + \cdots + P(A_n) = \sum_{i = 1}^{n} P(A_i)
+\]
+\end{theorem}
+\subsection*{Probabilities of Complements}
+\begin{theorem}
+For any event $A$, we have
+\[
+    P(A) = 1 - P(\comp{A})
+\]
+\end{theorem}
+\begin{proof}
+Recall the complement of an event consists of all the sample points not in the event. Thus, for any event~$A$, its complement~$\comp{A}$ contains no points in common with~$A$. So $A \intersect \comp{A} = \nullset$ and $A$ and~$\comp{A}$ are mutually exclusive, by~definition. Now, consider $A \union \comp{A}$, it spans the whole of the sample space so we have $P(A \union \comp{A}) = 1$ and since $A$ and $\comp{A}$ are mutually exclusive, we have
+\[
+    P(A) + P(\comp{A}) = 1
+\]
+\end{proof}
+and it follows that $P(A) = 1 - P(\comp{A})$, as required. \qed
+\section{Independence of Events}
+Events $A$ and $B$ are said to be independent if and only if $P(A \intersect B) = P(A)P(B)$. Otherwise they are dependent events.
+\par\smallskip
+In general, events $A_1,A_2,A_3\ldots,A_n$ are independent if and only if 
+\[
+    P(A_{i_1} \intersect A_{i_2} \intersect A_{i_3} \intersect \cdots \intersect A_{i_n}) = P(A_{i_1}) + P(A_{i_2}) + P(A_{i_3}) + \cdots + P(A_{i_n})
+\]
+for all sets $\{\, i_1,i_2,i_3,\ldots,i_k \,\}$ of distinct subscripts chosen from $\{\, 1,2,3,\ldots,n \,\}$.
+\begin{example}
+Consider an experiment in which a fair die is tossed twice. We define the following events:
+\begin{itemize}[noitemsep, topsep=4pt plus 2pt minus 1pt]
+    \item $A$: The first number rolled is a six
+    \item $B$: The second number rolled is a six
+    \item $C$: The sum of the numbers rolled is less than seven
+\end{itemize}
+Suppose the event $A$ occurs. Does this have any impact on the probability of $B$ or $C$ occurring?
+\par\smallskip
+It is quite clear to see that the events $A$ and $B$ are independent events since the 
+\end{example}
