@@ -59,8 +59,10 @@
 % ------------------------------------------------------ %
 % Create proof environment
 \newcounter{proof}[section]
-\newenvironment{proof}{\refstepcounter{proof}\par\medskip
-   \noindent\textbf{Proof~\thesection.\theproof:}\rmfamily\par\medskip\noindent}{\medskip}
+\newenvironment{proof}{\refstepcounter{proof}\par\medskip%
+   \noindent\textbf{Proof~\thesection.\theproof:}\rmfamily\par\medskip\noindent}{\medskip}%
+
+\newcommand*{\qed}{\ensuremath{\square}}
 % ------------------------------------------------------ %
 
 % ------------------------------------------------------ %
