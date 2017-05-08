@@ -60,7 +60,7 @@
 % Create proof environment
 \newcounter{proof}[section]
 \newenvironment{proof}{\refstepcounter{proof}\par\medskip%
-   \noindent\textbf{Proof~\thesection.\theproof:}\rmfamily\par\medskip\noindent}{\medskip}%
+   \noindent\textbf{Proof~\thesection.\theproof:}\rmfamily\par\nopagebreak\medskip\noindent}{\medskip}%
 
 \newcommand*{\qed}{\ensuremath{\square}}
 % ------------------------------------------------------ %
@@ -80,12 +80,13 @@
 
 \newcommand*{\tofact}[2]{#1^{(#2)}}
 
+\newcommand*{\ifo}{\leftrightarrow}
+
 \newcommand*{\union}{\cup}
 \newcommand*{\intersect}{\cap}
 \newcommand*{\given}{\vert}
 \newcommand*{\comp}{\overline}
 \newcommand*{\nullset}{\emptyset}
-
 \newcommand*{\ssep}{\mid}
 \newcommand*{\sS}{\ensuremath{\mathbb{S}}}
 \newcommand*{\sR}{\ensuremath{\mathbb{R}}}
