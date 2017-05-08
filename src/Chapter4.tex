@@ -294,3 +294,11 @@ Let $A_1, A_2, A_3,\ldots,A_k$ be mutually exclusive events on a sample space an
     = \sum_{i = 1}^{k} P(A_i)P(B \given A_i)
 \]
 \end{theorem}
+\subsection*{Bayes Theorem}
+\begin{theorem}
+Let $A$ and~$B$ be events on a sample space, with $P(B) > 0$. We have
+\[
+    P(A \given B) = \frac{P(B \given A)P(A)}{P(B)}
+    = \frac{P(B \given A)P(A)}{P(B \given \comp{A})P(\comp{A}) + P(B \given A)P(A)}
+\]
+\end{theorem}
