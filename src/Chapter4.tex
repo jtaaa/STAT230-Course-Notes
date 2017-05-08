@@ -235,9 +235,25 @@ Consider an experiment in which a fair die is tossed twice. We define the follow
 \begin{itemize}[noitemsep, topsep=4pt plus 2pt minus 1pt]
     \item $A$: The first number rolled is a six
     \item $B$: The second number rolled is a six
-    \item $C$: The sum of the numbers rolled is less than seven
+    \item $C$: The sum of the numbers rolled is less than or equal to seven
+    \item $D$: The sum of the numbers rolled is equal to seven
 \end{itemize}
-Suppose the event $A$ occurs. Does this have any impact on the probability of $B$ or $C$ occurring?
+Suppose the event $A$ occurs. Does this have any impact on the probability of $B, C$ or $D$ occurring?
 \par\smallskip
-It is quite clear to see that the events $A$ and $B$ are independent events since the 
+It is quite clear to see that the events $A$ and $B$ are independent events since rolling a six on the first toss has no impact on the number that will be rolled on the second toss. Now, events $B$ and $C$ from the onset appear to be dependent since if you roll a six on the first toss you must roll a one to make your total less than or equal to seven. To confirm this consider the sample space
+\[
+    \left\{
+        \begin{array}{c@{,\ }c@{,\ }c@{,\ }c@{,\ }c@{,\ }c}
+            (1,1) & (1,2) & (1,3) & (1,4) & (1,5) & (1,6) \\
+            (2,1) & (2,2) & (2,3) & (2,4) & (2,5) & (2,6) \\
+            (3,1) & (3,2) & (3,3) & (3,4) & (3,5) & (3,6) \\
+            (4,1) & (4,2) & (4,3) & (4,4) & (4,5) & (4,6) \\
+            (5,1) & (5,2) & (5,3) & (5,4) & (5,5) & (5,6) \\
+            (6,1) & (6,2) & (6,3) & (6,4) & (6,5) & (6,6) \\
+        \end{array}
+    \right\}
+\]
+We can count that 21 of the sample points have sums less than or equal to seven. So the probability of $C$ occurring is $P(C) = 21/36 = 7/12$. We also have that $P(A) = 1/6$. So $P(A)P(C) = 7/72$ but we can count that $A \intersect C$ contains only one sample point and hence has a probability of $1/36$. Thus, $P(A)P(C) \neq P(A \intersect C)$ so $A$ and $C$ are dependent events.
+\par\smallskip
+At first glance, we see that upon rolling a six as the first number you must roll a 1 for the sum to equal seven. So at first glance, events $A$ and $D$ seem to be independent however it would be na\"\i ve to assume this. We can count from the sample space that event $D$ contains 6 points and so has a probability~$P(D) = 6/36 = 1/6$ and $P(A) = 1/6$. So $P(A)P(D) = 1/36$. Now, we can count that the event $A \intersect D$ contains only one point, (1,6) and so has a probability~$P(A \intersect D) = 1/36$. Therefore, $P(A \intersect D) = P(A)P(D)$ and the events $A$ and~$D$ are independent.
 \end{example}
