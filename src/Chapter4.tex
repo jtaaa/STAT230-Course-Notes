@@ -257,3 +257,40 @@ We can count that 21 of the sample points have sums less than or equal to seven.
 \par\smallskip
 At first glance, we see that upon rolling a six as the first number you must roll a 1 for the sum to equal seven. So at first glance, events $A$ and $D$ seem to be independent however it would be na\"\i ve to assume this. We can count from the sample space that event $D$ contains 6 points and so has a probability~$P(D) = 6/36 = 1/6$ and $P(A) = 1/6$. So $P(A)P(D) = 1/36$. Now, we can count that the event $A \intersect D$ contains only one point, (1,6) and so has a probability~$P(A \intersect D) = 1/36$. Therefore, $P(A \intersect D) = P(A)P(D)$ and the events $A$ and~$D$ are independent.
 \end{example}
+\section{Conditional Probability}
+Often we need to calculate the probability of some event~$A$ occurring while knowing that some other event~$B$ has already occurred. We call this the conditional probability of $A$ \textbf{given} $B$ and denote it by $P(A \given B)$.
+\par\smallskip
+The conditional probability of event~$A$, given event~$B$, is
+\[
+    P(A \given B) = \frac{P(A \intersect B)}{P(B)}\for P(B) > 0
+\]
+\begin{theorem}
+For any two events~$A$ and~$B$ defined on the same sample space, with $P(A) > 0$ and $P(B) > 0$, events~$A$ and~$B$ are independent if and only if $P(A \given B) = P(A)$ or $P(B \given A) = P(B)$.
+\end{theorem}
+\begin{proof}
+\begin{align*}
+    P(A \given B) &= \frac{P(A \intersect B)}{P(B)} \\
+    \ifo 
+    P(A \intersect B) &= P(A \given B)P(B)
+\end{align*}
+and by definition of independence,~$A$ and~$B$ are independent if and only if $P(A \intersect B) = P(A)P(B)$ which is true if and only if $P(A \given B) = P(A)$. Without loss of generality we can swap events~$A$ and~$B$ and arrive at the conclusion. \qed
+\end{proof}
+\subsection*{Product Rules}
+\begin{theorem}
+Let $A, B, C$ and~$D$ be events on a sample space, with $P(A), P(B), P(C), P(D) > 0$. We have
+\begin{align*}
+    P(A \intersect B) &= P(A)P(B \given A) \\
+    P(A \intersect B \intersect C) &= P(A)P(B \given A)P(C \given A \intersect B) \\
+    P(A \intersect B \intersect C \intersect D) &=
+    P(A)P(B \given A)P(C \given A \intersect B)P(D \given A \intersect B \intersect C) \\
+\end{align*}
+and so on$\ldots$
+\end{theorem}
+\subsection*{Law of Total Probability}
+\begin{theorem}
+Let $A_1, A_2, A_3,\ldots,A_k$ be mutually exclusive events on a sample space and let $B$ be an event on the same sample space. We have
+\[
+    P(B) = P(B \intersect A_1) + P(B \intersect A_2) + P(B \intersect A_3) + \cdots + P(B \intersect A_k)
+    = \sum_{i = 1}^{k} P(A_i)P(B \given A_i)
+\]
+\end{theorem}
