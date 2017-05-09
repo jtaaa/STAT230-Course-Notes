@@ -41,3 +41,31 @@ Another common form in which this theorem may be represented is
 \begin{info}
 The summation is over all non-negative integers, $k_1,k_2,\ldots,k_m$ such that $k_1 + k_2 + \cdots + k_m = n$
 \end{info}
+\section{Hypergeometric Identitiy}
+\[
+    \sum_{x = 0}^{\infty} \binom{a}{x} \binom{b}{n-x} = \binom{a + b}{n}
+\]
+\begin{proof}
+We begin with the equality
+\[
+    (1 + y)^{a + b} = (1 + y)^a \times (1 + y)^b
+\]
+Now by Binomial Theorem we have
+\[
+    \sum_{k = 0}^{a + b} \binom{a + b}{k} y^k = \sum_{i = 0}^{a} \binom{a}{i} y^i \times \sum_{j = 0}^{b} \binom{b}{j} y^j
+\]
+Consider the coefficient of $y^k$ on the right hand side. It is the sum of all the binomial terms such that $i + j = k$. Thus, the coefficient of $y^k$ on the right hand side is
+\[
+    \sum_{i = 0}^{\min\{\, a,k \,\}} \binom{a}{i} \binom{b}{k-i}
+\]
+and since when $i > a$ or $i > k$ the term is 0 we can increase the sum to infinity. Thus, since the coefficient on the right hand side is equal to that on the left hand side we have
+\[
+    \binom{a + b}{k} = \sum_{i = 0}^{\infty} \binom{a}{i} \binom{b}{k-i}
+\]
+\end{proof}
+\begin{info}
+When $x$ becomes significantly large, the terms of the summation become 0 since 
+\[
+    \binom{n}{x} = \binom{n}{n-x} = 0,\:\for x > n
+\]
+\end{info}
