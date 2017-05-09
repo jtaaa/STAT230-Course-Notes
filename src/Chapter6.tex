@@ -14,3 +14,17 @@ Other identities can be obtained from this one by differentiation. For example w
     \deriv r\sum_{i = 0}^{\infty} r^i = \sum_{i = 0}^{\infty} ir^{i-1} = \deriv r\,\frac{1}{1-r} = \frac{1}{(1-r)^2}
 \]
 \end{info}
+\section{Binomial Theorem}
+The binomial theorem describes the algebraic expansion of powers of a polynomial.
+\[
+    (1 + t)^n = 1 + \binom{n}{1}t^1 + \binom{n}{2}t^2 + \cdots + \binom{n}{n}t^n = \sum_{x = 0}^{n} \binom{n}{x} t^x
+\]
+for any positive integer $n$ and real number $t$.
+\par\smallskip
+A more general form of this theorem that holds even when $n$ is not a positive~integer is
+\[
+    (1 + t)^n = \sum_{x = 0}^{\infty} \binom{n}{x} t^x,\:\for \abs{t} < 1
+\]
+\begin{info}
+It is an important skill to be able to recognize if an infinite, or otherwise, polynomial with binomial coefficients can be reduced to a simple polynomial raised to a power.
+\end{info}
