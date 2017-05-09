@@ -315,3 +315,52 @@ Let $A$ and~$B$ be events on a sample space, with $P(B) > 0$. We have
 \begin{info}
 Bayes' Theorem allows us to find the conditional probability of some event~$A$ given~$B$, in terms of the probability of~$B$ given~$A$. It allows us calculate conditional probabilities using the reversed order of conditioning.
 \end{info}
+\subsection*{Tree Diagrams}
+Tree diagrams are a technique that we can use to keep track of conditional probabilities. We start from a single node and draw new branches to separate nodes for each event. Each node represents the event occurring. On each branch we write the probability of event it leads to occurring. To find the probability of any node we multiply the probabilities of the branches leading to the node.
+\begin{figure}[htp]
+\centering
+\begin{tikzpicture}[
+roundnode/.style={circle, draw=green!60, fill=green!5, very thick, minimum size=5mm},
+]
+%Nodes
+\node[roundnode]        (root)                              {};
+\node[roundnode]        (A2)        [right=3cm of root]                 {$\scriptstyle A_2$};
+\node[roundnode]        (A1)        [above=1.5cm of A2]                 {$\scriptstyle A_1$};
+\node[roundnode]        (A3)        [below=1.5cm of A2]                 {$\scriptstyle A_3$};
+\node[roundnode]        (A1B)       [above right=0.25cm and 3cm of A1]   {$\scriptstyle B$};
+\node[roundnode]        (A1compB)   [below=0.5cm of A1B]                {$\scriptstyle\comp{B}$};
+\node[roundnode]        (A2B)       [above right=0.25cm and 3cm of A2]   {$\scriptstyle B$};
+\node[roundnode]        (A2compB)   [below=0.5cm of A2B]                {$\scriptstyle\comp{B}$};
+\node[roundnode]        (A3B)       [above right=0.25cm and 3cm of A3]   {$\scriptstyle B$};
+\node[roundnode]        (A3compB)   [below=0.5cm of A3B]                {$\scriptstyle\comp{B}$};
+ 
+%Lines
+\draw[->] (root.east) -- (A1.west) node[midway, sloped, above] {0.5};
+\draw[->] (root.east) -- (A2.west) node[midway, sloped, above] {0.3};
+\draw[->] (root.east) -- (A3.west) node[midway, sloped, above] {0.2};
+\draw[->] (A1.east) -- (A1B.west) node[midway, sloped, above] {0.7};
+\draw[->] (A1.east) -- (A1compB.west) node[midway, sloped, above] {0.3};
+\draw[->] (A2.east) -- (A2B.west) node[midway, sloped, above] {0.9};
+\draw[->] (A2.east) -- (A2compB.west) node[midway, sloped, above] {0.1};
+\draw[->] (A3.east) -- (A3B.west) node[midway, sloped, above] {0.4};
+\draw[->] (A3.east) -- (A3compB.west) node[midway, sloped, above] {0.6};
+
+%Probabilities
+\node [right=3mm of A1B]
+    {$P(A_1 \intersect B) = P(B \given A_1)P(A_1) = 0.5 \times 0.7$};
+\node [right=3mm of A1compB]
+    {$P(A_1 \intersect \comp{B}) = P(\comp{B} \given A_1)P(A_1) = 0.5 \times 0.3$};
+\node [right=3mm of A2B]
+    {$P(A_2 \intersect B) = P(B \given A_2)P(A_2) = 0.3 \times 0.9$};
+\node [right=3mm of A2compB]
+    {$P(A_2 \intersect \comp{B}) = P(\comp{B} \given A_2)P(A_2) = 0.3 \times 0.1$};
+\node [right=3mm of A3B]
+    {$P(A_3 \intersect B) = P(B \given A_3)P(A_3) = 0.2 \times 0.4$};
+\node [right=3mm of A3compB]
+    {$P(A_3 \intersect \comp{B}) = P(\comp{B} \given A_3)P(A_3) = 0.2 \times 0.6$};
+\end{tikzpicture}
+\caption{Tree diagram} \label{fig:Tree diagram}
+\end{figure}
+\begin{info}
+The probability of all the the branches leading outward from each node must sum to a probability of 1 since at least one outcome must occur.
+\end{info}
