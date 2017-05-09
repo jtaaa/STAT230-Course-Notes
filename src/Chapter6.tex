@@ -1,0 +1,16 @@
+\chapter{Useful Sums and Series}
+This chapter includes a few useful sums and series that show up in the following chapters.
+\section{Geometric Series}
+\[
+    \sum_{i = 0}^{n-1} r^i = 1 + r + r^2 + \cdots + r^{n-1} = \frac{1-r^n}{1-r}
+\]
+For $\abs{r} < 1$, we have
+\[
+    \sum_{i = 0}^{\infty} r^i = 1 + r + r^2 + \cdots = \frac{1}{1-r}
+\]
+\begin{info}
+Other identities can be obtained from this one by differentiation. For example we have
+\[
+    \deriv r\sum_{i = 0}^{\infty} r^i = \sum_{i = 0}^{\infty} ir^{i-1} = \deriv r\,\frac{1}{1-r} = \frac{1}{(1-r)^2}
+\]
+\end{info}
