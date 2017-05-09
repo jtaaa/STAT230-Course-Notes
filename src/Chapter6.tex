@@ -28,3 +28,16 @@ A more general form of this theorem that holds even when $n$ is not a positive~i
 \begin{info}
 It is an important skill to be able to recognize if an infinite, or otherwise, polynomial with binomial coefficients can be reduced to a simple polynomial raised to a power.
 \end{info}
+\section{Multinomial Theorem}
+The multinomial theorem is a generalization of the binomial theorem. It describes the algebraic expansion of powers of a sum in terms of powers of the terms in the sum.
+\[
+    (x_1 + x_2 + \cdots + x_m)^n = \sum_{k_1 + k_2 + \cdots + k_m = n} \binom{n}{k_1,k_2,\ldots,k_m} \prod_{t = 1}^{m} x_t^{k_t}
+\]
+Another common form in which this theorem may be represented is
+\[
+    (x_1 + x_2 + \cdots + x_m)^n 
+    = \sum_{k_1 + k_2 + \cdots + k_m = n} \frac{1}{k_1!\,k_2!\cdots k_m!}(x_1^{k_1}x_2^{k_2}\cdots x_m^{k_m})
+\]
+\begin{info}
+The summation is over all non-negative integers, $k_1,k_2,\ldots,k_m$ such that $k_1 + k_2 + \cdots + k_m = n$
+\end{info}
