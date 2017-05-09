@@ -220,8 +220,8 @@ Recall the complement of an event consists of all the sample points not in the e
 \[
     P(A) + P(\comp{A}) = 1
 \]
+and it follows that $P(A) = 1 - P(\comp{A})$, as required.
 \end{proof}
-and it follows that $P(A) = 1 - P(\comp{A})$, as required. \qed
 \section{Independence of Events}
 Events $A$ and $B$ are said to be independent if and only if $P(A \intersect B) = P(A)P(B)$. Otherwise they are dependent events.
 \par\smallskip
@@ -273,7 +273,7 @@ For any two events~$A$ and~$B$ defined on the same sample space, with $P(A) > 0$
     \ifo 
     P(A \intersect B) &= P(A \given B)P(B)
 \end{align*}
-and by definition of independence,~$A$ and~$B$ are independent if and only if $P(A \intersect B) = P(A)P(B)$ which is true if and only if $P(A \given B) = P(A)$. Without loss of generality we can swap events~$A$ and~$B$ and arrive at the conclusion. \qed
+and by definition of independence,~$A$ and~$B$ are independent if and only if $P(A \intersect B) = P(A)P(B)$ which is true if and only if $P(A \given B) = P(A)$. Without loss of generality we can swap events~$A$ and~$B$ and arrive at the conclusion.
 \end{proof}
 \subsection*{Product Rules}
 \begin{theorem}
@@ -302,3 +302,16 @@ Let $A$ and~$B$ be events on a sample space, with $P(B) > 0$. We have
     = \frac{P(B \given A)P(A)}{P(B \given \comp{A})P(\comp{A}) + P(B \given A)P(A)}
 \]
 \end{theorem}
+\begin{proof}
+\begin{align*}
+    P(A \given B)
+    &= \frac{P(A \intersect B)}{P(B)} 
+    = \frac{P(B \given A)P(A)}{P(B)}\by{Theorem 4.7.2 (Product Rule)} \\
+    &= \frac{P(B \given A)P(A)}{P(A \intersect B) + P(\comp{A} \intersect B)}
+    \by{Theorem 4.7.3 (Law of Total Probability)} \\
+    &= \frac{P(B \given A)P(A)}{P(B \given \comp{A})P(\comp{A}) + P(B \given A)P(A)}\by{Theorem 4.7.2 (Product Rule)}
+\end{align*}
+\end{proof}
+\begin{info}
+Bayes' Theorem allows us to find the conditional probability of some event~$A$ given~$B$, in terms of the probability of~$B$ given~$A$. It allows us calculate conditional probabilities using the reversed order of conditioning.
+\end{info}
