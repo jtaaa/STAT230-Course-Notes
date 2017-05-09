@@ -60,7 +60,7 @@
 % Create proof environment
 \newcounter{proof}[section]
 \newenvironment{proof}{\refstepcounter{proof}\par\medskip%
-    \noindent\paragraph{Proof~\thesection.\theproof:}
+    \noindent\textbf{Proof~\thesection.\theproof:}
     \par\nopagebreak\medskip\noindent}{\hfill$\qed$\par\medskip}
 
 \newcommand*{\qed}{\ensuremath{\square}}
