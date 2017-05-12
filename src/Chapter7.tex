@@ -1,6 +1,45 @@
 \chapter{Discrete Random Variables and Probability Functions}
 \section{Random Variables}
-\lipsum[2]
+A random variable (\rv~for short) is a numerical valued variable that represents the outcome of an experiment or process. Every random variable has a range associated with it, which is the set of all possible values the \rv~can take. We denote random variables by capital letters, e.g., $A$, $X$, $Z$.
+\begin{example}
+Suppose an experiment consists of tossing a coin three times. Let the random variable $X$ be the number of heads that are rolled. And let the random variable $Y$ be the number of tails rolled. Now, we have a nice short hand in that $X = 2$ is equivalent to the statement ``two heads were rolled''.
+\par\smallskip
+Moreover, we have useful equalities such as $X + Y = 3$ and $X = 3 - Y$. 
+
+The ranges of $X$ and $Y$ are both $\{\, 0,1,2,3 \,\}$.
+\end{example}
+\begin{info}
+It is very important to understand the purpose of \rv's since the remainder of this course features them heavily.
+\end{info}
+The formal definition of a random variable is a function that assigns a real number to each point in a sample space.
+\begin{example}
+Consider the same experiment as above. The sample space is
+\[
+    \{\, \text{HHH, HHT, HTH, HTT, THH, THT, TTH, TTT} \,\}
+\]
+Let us define $X$ the number of heads that are rolled and the sample point $a = \text{HHT}$. The value of the function $X(a) = 2$ it is found by counting the number of heads in $a$. The range of $X$ is $\{\, 0,1,2,3 \,\}$. Each of the outcomes $X=x$ represents an event, simple or compound. In this case they are:
+\begin{center}
+\begin{tabular}{c|r}
+    $X$     & Event \\
+    \hline
+    0       & $\{\, \text{TTT} \,\}$ \\
+    1       & $\{\, \text{TTH, THT, HTT} \,\}$ \\
+    2       & $\{\, \text{THH, HTH, HHT} \,\}$ \\
+    3       & $\{\, \text{HHH} \,\}$ \\
+\end{tabular}
+\end{center}
+\end{example}
+Since some outcome in the range must always occur for a random variable for each event in the sample space, the events of a random variable are mutually exclusive subsets of the sample space such that their union is the total sample space. For \rv~$X$ and outcome $x$, we have $X = x$ represents some event and we are interested in calculating its probability. We denote the probability of $X = x$ by $P(X = x)$.
+\begin{info}
+Since the union of the events of values of a random variable is the total sample space, we have
+\[
+    \sum_{x \in \range{X}} P(X=x) = 1
+\]
+\end{info}
+\subsection*{Discrete Random Variables}
+Discrete random variables take integer values or, more generally, values in a countable set. Recall that a set is countable if its elements can be placed in a one-to-one correspondence with a subset of the positive integers.
+\subsection*{Continuous Random Variables}
+Continuous random variables take values in some interval of real numbers like $(0,1)$ or $(0,\infty)$ or $(\infty,\infty)$. You should be aware that there are infinitely numerical non-integer values that a \rv~with $\range{0,1}$ could take. The values are separated by infinitesimally small intervals.
 \section{Probability Function}
 \lipsum[1]
 \section{Cumulative Distribution Function}
