@@ -41,6 +41,17 @@ Discrete random variables take integer values or, more generally, values in a co
 \subsection*{Continuous Random Variables}
 Continuous random variables take values in some interval of real numbers like $(0,1)$ or $(0,\infty)$ or $(\infty,\infty)$. You should be aware that there are infinitely numerical non-integer values that a \rv~with $\range{0,1}$ could take. The values are separated by infinitesimally small intervals.
 \section{Probability Function}
-\lipsum[1]
+The probability function of a random variable $X$ is a function that maps the value of $X$ to the probability of that value. The probability function is represented by 
+\[
+    f(x) = P(X = x)\for x\in\range{X}
+\]
+The set of pairs $\{\, (x,f(x)) \ssep x\in\range{X} \,\}$ is called the \textbf{probability distribution} of~$X$.
+
+\subsection*{Properties of Probability Functions}
+The following two properties hold for all probability functions.
+\begin{itemize}
+    \item $f(x) \geq 0 \for\all x\in\range{X}$
+    \item $\sum\limits_{x\in\range{X}} f(x) = 1$
+\end{itemize}
 \section{Cumulative Distribution Function}
 \lipsum[3]
