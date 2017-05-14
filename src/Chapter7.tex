@@ -54,4 +54,20 @@ The following two properties hold for all probability functions.
     \item $\sum\limits_{x\in\range{X}} f(x) = 1$
 \end{itemize}
 \section{Cumulative Distribution Function}
-\lipsum[3]
+Another common function used to describe a probability model is the cumulative distribution function, usually denoted by $F(x)$. It is defined to be
+\[
+    F(x) = P(X \leq x) \for\all x\in\range{X}
+\]
+Not that because the events ``$X = x$'' and ``$X = y$'' for $x \neq y$ are mutually exclusive we have
+\[
+    F(x) = P(X \leq x) = \sum_{z = 0}^{x} P(X = z)  \for\all x\in\range{X}
+\]
+It is the sum of the probabilities that the random variable takes values less than or equal to $x$.
+\subsection*{Properties of Cumulative Distribution Functions}
+The following four properties hold for all cumulative distribution functions.
+\begin{itemize}
+    \item $F(x)$ is a non-decreasing function
+    \item $0 \leq F(x) \leq 1 \for\all x\in\sR$
+    \item $\lim\limits_{x \tendsto -\infty} F(x) = 0$
+    \item $\lim\limits_{x \tendsto \infty} F(x) = 1$
+\end{itemize}
