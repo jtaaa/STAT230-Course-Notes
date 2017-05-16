@@ -1,0 +1,23 @@
+\chapter{Discrete Distributions}
+As we briefly mentioned in the previous chapter, \textbf{probability distributions} are the set of pairs~$(x,f(x))$ for all possible outcomes~$x$ of a random variable~$X$. Many probability distributions appear commonly on \rv's of similar ``real-life'' processes. In this chapter we define a few of these common distributions on discrete random variables, when they occur and how to use them to calculate probabilities.
+\begin{info}
+It is important to understand distributions early-on. Distributions, probability functions and cumulative distribution functions are defined on random variables \textbf{not} experiments/processes or sample spaces.
+\end{info}
+
+\section{Uniform Distribution}
+Suppose $X$ can take a finite set of consecutive values with each of the values being equally likely. That is $\range{X} = \{\, a,a+1,a+2,\ldots,b \,\}$ with each of $a,a+1,a+2,\ldots,b$ being equally likely. Then $X$ has a discrete uniform distribution and we denote it \\
+$X \dist \duni$
+\[
+    f(x) = P(X = x) = \left\{
+    \begin{array}{c@{\hspace{1em}}l}
+        \displaystyle\frac{1}{b - a + 1} & \for\all x\in\range{X} \\[1em]
+         0 & \ow 
+    \end{array}\right.
+\]
+The probability of each value of the \rv~is easy to calculate since they are all equal and must add up to 1. Therefore, $k \times P(X = a) = 1$ where $k$ is the number of possible values of $X$. The number of possible values of $X$ is $b - (a - 1) = b - a + 1$ since $\range{X}$ is between $a$ and $b$ inclusive.
+\begin{info}
+Another way to define the probability of each value of a random variable with this sample space is 
+\[
+\frac{1}{\text{Number of possible values in $\range{X}$}}
+\]
+\end{info}
