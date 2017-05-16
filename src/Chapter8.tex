@@ -28,7 +28,7 @@ Suppose we have a collections of $N$ objects which can be classified into two di
 $X\dist\hype$
 \[
     f(x) = P(X = x) =
-    \frac{\displaystyle\binom{r}{x}\binom{N-r}{n-x}}{\displaystyle\binom{N}{n}},\:\for x\leq\min(r,n)
+    \frac{\displaystyle\binom{r}{x} \binom{N-r}{n-x}}{\displaystyle\binom{N}{n}},\:\for x\leq\min(r,n)
 \]
 \begin{theory}{Derivation of Probability Function}
 We will use the counting techniques we previously learnt to calculate the probability function. We note that there are $\binom{N}{n}$ ways to select $n$ objects from the total of $N$ so the sample space contains $\binom{N}{n}$~points. Now the number of ways of choosing $x$ successes from the total of $r$ is $\binom{r}{x}$ \textbf{and independently} the number of ways to choose the remainder of objects, $n-x$, from the total remaining objects, $N - r$, is $\binom{N - r}{n - x}$. Thus the probability of~$X = x$ by the multiplication rule is the product of those expressions divided by the number of points in the sample space, $\frac{\binom{r}{x}\binom{N-r}{n-x}}{\binom{N}{n}}$.
@@ -40,14 +40,64 @@ It is important to understand that the terms ``successes'' and ``failures'' are 
     This is used when we know how many items (n) are chosen at random from a set with two different types and we know the amount of each type in the set.
 \end{info}
 \begin{example}
-    There is a basket with 11 fruit, 9 apples and 2 oranges. 4 fruit are picked at random from the basket. Let random variable $X$ be the number of apples selected. Find $f(x)=P(X=x)$. Then find $f(3)$. \\
-    $X\dist\hype$. $N=11,n=4,r=9$.
-    \[f(x)=P(X=x)=\displaystyle\frac{\displaystyle\binom{9}{x}\binom{2}{4-x}}{\displaystyle\binom{11}{4}}\for x\leq4\]
-    Hence \[f(7)=P(X=7)=\displaystyle\frac{\displaystyle\binom{9}{3}\binom{2}{1}}{\displaystyle\binom{11}{4}}\approx0.509\]
+There is a basket with 11 fruit, 9 apples and 2 oranges. 4 fruit are picked at random from the basket. Let random variable $X$ be the number of apples selected. Find $f(x)=P(X=x)$. Then find $f(3)$. \\
+$X\dist\hype$. $N=11,n=4,r=9$.
+\[
+    f(x) = P(X = x) = \displaystyle\frac{\displaystyle\binom{9}{x} \binom{2}{4-x}} {\displaystyle\binom{11}{4}},\:\for x \leq 4
+\]
+Hence 
+\[
+    f(7) = P(X = 7) = \displaystyle\frac{\displaystyle\binom{9}{3} \binom{2}{1}} {\displaystyle\binom{11}{4}} \approx 0.509
+\]
 \end{example}
 \begin{example}
-    15 cards are drawn from a deck of 52 at random. Let $X$ be the number of red cards drawn. Find $f(x)=P(X=x)$. Then find $f(7)$. \\
-    $X\dist\hype$. $N=52,n=15,r=26$.
-    \[f(x)=P(X=x)=\displaystyle\frac{\displaystyle\binom{26}{x}\binom{26}{15-x}}{\displaystyle\binom{52}{15}}\for x\leq15\]
-    Hence \[f(7)=P(X=7)=\displaystyle\frac{\displaystyle\binom{26}{7}\binom{26}{8}}{\displaystyle\binom{52}{15}}\approx0.229\]
+15 cards are drawn from a deck of 52 at random. Let $X$ be the number of red cards drawn. Find $f(x)=P(X=x)$. Then find $f(7)$. \\
+$X\dist\hype$. $N=52,n=15,r=26$.
+\[
+    f(x) = P(X = x) = \displaystyle\frac{\displaystyle\binom{26}{x} \binom{26}{15-x}} {\displaystyle\binom{52}{15}},\:\for x \leq 15
+\]
+Hence \[
+    f(7) = P(X = 7) = \displaystyle\frac{\displaystyle\binom{26}{7} \binom{26}{8}} {\displaystyle\binom{52}{15}} \approx 0.229
+\]
+\end{example}
+\section{Binomial Distribution}
+Suppose we have an experiment with two distinct outcomes, success and failure, with the probability of a success being $p$ and a failure being $(1-p)$. The experiment is repeated $n$ times independently (these are called trials). Let the random variable $X$ be the number of successes obtained. $X$ has a binomial distribution. \\
+$X\dist\bino(n,p)$
+\[
+    f(x) = P(X = x) = \displaystyle\binom{n}{x}p^x (1-p)^{n-x},\:\for x=1,\ldots,n
+\]
+\begin{theory}{Derivation of Probability Function}
+Since there are $n$ positions in which to put the $x$ successes there are $\binom{n}{x}$ unique arrangements of successes and failures that satisfy ``$X = x$''. Each of these arrangements has probability $p^x (1-p)^{n-x}$ since the probability of obtaining $x$ successes is $p^x$ and the probability of obtaining $n-x$ failures is $(1-p)^{n-x}$. So the probability that $X = x$, that is that any of the arrangements occur, is the sum of the probability of each unique arrangement, $\binom{n}{x}p^x (1-p)^{n-x}$.
+\end{theory}
+\begin{info}
+The above formula describes the probability of $x$ success and $(n-x)$ failures multiplied by the number of different ways of arranging those successes within the total number of trials of the experiment.
+\end{info}
+\begin{info}
+Each of the n individual experiments is called a ``Bernoulli trial'' and the entire process of n trials is called a Bernoulli process or a Binomial process.
+\end{info}
+\begin{example}
+A loaded coin is flipped 10 times, with a probability of a heads occurring being 0.4. Let random variable $X$ be the number of heads that occur. Find $f(x)=P(X=x)$, then find $f(3)$. \\
+$X\dist\bino(10,0.4)$.
+\[
+    f(x) = P(X = x) = \displaystyle\binom{10}{x} (0.4)^x (0.6)^{10-x},\:\for x = 1,\ldots,10
+\]
+Hence 
+\[
+    f(3) = P(X = 3) = \displaystyle\binom{10}{3} (0.4)^3 (0.6)^7 \approx 0.215
+\]
+\end{example}
+\begin{example}
+A football season in a university league has 22 games. The probability of each game being abandoned (because of bad weather or other hazards) is 0.02. Let $X$ be the number of games abandoned throughout the whole season. Find $f(x)=P(X=x)$, then find $f(2)$ and $f(10)$. \\
+$X\dist\bino(22,0.02)$.
+\[
+    f(x) = P(X = x) = \displaystyle\binom{22}{x} (0.02)^x (0.98)^{22-x},\:\for x = 1,\ldots,22
+\]
+Hence 
+\[
+    f(2) = P(X = 2) = \displaystyle\binom{22}{2} (0.02)^2 (0.98)^20 \approx 0.062
+\]
+and 
+\[
+    f(10) = P(X = 10) = \displaystyle\binom{22}{10} (0.02)^{10} (0.98)^{12} \approx \sn{5.196}{-12}
+\]
 \end{example}
