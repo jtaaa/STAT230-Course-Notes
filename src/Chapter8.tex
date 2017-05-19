@@ -109,16 +109,31 @@ The Hypergeometric distribution is used when there is a fixed number of objects 
 The Binomial distribution is used when there is no fixed number of objects to be selected from and instead we know the constant probability of a success for all the trials.
 \end{info}
 \begin{example}
-Consider Lisa owns a car dealership and has only 150~red cars and 350~blue cars in stock. A rich~Swedish man enters and picks 100~cars randomly to purchase. Let $X$ be the number of red cars the Swede purchases.
+Consider Lisa owns a car dealership and has only 750~red cars and 1250~blue cars in stock. A rich~Swedish man enters and picks 50~cars randomly to purchase. Let $X$ be the number of red cars the Swede purchases.
 \par\smallskip
-Since we know the number of successes (150~red cars) and failures (350~blue cars) as well as the number of trials, we have that $X \dist \geom$ and 
+Since we know the number of successes (750~red cars) and failures (1250~blue cars) as well as the number of trials, we have that $X \dist \geom$ and 
 \[
-    f(x) = P(X = x) = \frac{\binom{150}{x} \binom{350}{100-x}}{\binom{500}{100}}
+    f(x) = P(X = x) = \frac{\binom{750}{x} \binom{1250}{50-x}}{\binom{2000}{50}}
 \]
-Now, consider Lisa has run out of all her stock of cars. She goes to a Swedish car manufacturer's factory which is capable of producing any amount of cars. The factory has a 30\% chance of producing a red~car and otherwise produces a blue~car. Lisa orders 100~cars. Let $X$ be the number of red~cars she receives.
+Now, consider Lisa has run out of all her stock of cars. She goes to a Swedish car manufacturer's factory which is capable of producing any amount of cars. The factory has a 37.5\% chance of producing a red~car and otherwise produces a blue~car. Lisa orders 50~cars. Let $X$ be the number of red~cars she receives.
 \par\smallskip
-Since there is no fixed number of cars to choose from but we do know the probability of each car being a success, we have that $X \dist \bino(100, 0.3)$ and
+Since there is no fixed number of cars to choose from but we do know the probability of each car being a success, we have that $X \dist \bino(50, 0.375)$ and
 \[
-    f(x) = P(X = x) = \binom{100}{x} (0.3)^{x} (0.7)^{100-x}
+    f(x) = P(X = x) = \binom{50}{x} (0.375)^{x} (0.625)^{50-x}
 \]
+\end{example}
+\subsection{Binomial Estimate of the Hypergeometric Distribution}
+When the number of objects to choose from, $N$, is very large and the number of objects being chosen, $n$, is relatively small in a hypergeometric distribution, we have that the probability of a success changes only very slightly due to lack of replacement. Since the number of objects is so large choosing a small number of objects without replacement barely changes the probability of a success so $p$ is relatively constant. Thus we can fairly accurately estimate the distribution with a binomial distribution with the original probability of a success for the first choice.
+\begin{example}
+Consider the previous example, suppose the rich Swedish man purchased 50 cars from Lisa. What is the probability that he purchases 20 red cars?
+\par\smallskip
+The number of cars Lisa has in stock is very large and the number of cars being bought is fairly small. Thus we can approximate the distribution with the probability of a success being $750/2000 = 0.375$. We have
+\[
+    f(20) = P(X = 20) = \binom{50}{20} (0.375)^{20} (0.625)^{30} \approx 0.1072
+\]
+Now we can calculate the probability using the hypergeometric distribution to determine how good an estimate this is. We have
+\[
+    f(20) = P(X = 20) = \frac{\binom{750}{20} \binom{1250}{30}}{\binom{2000}{50}} \approx 0.1084
+\]
+So the approximation is accurate to 2 decimal points.
 \end{example}
