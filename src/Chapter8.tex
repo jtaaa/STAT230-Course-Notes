@@ -101,3 +101,24 @@ and
     f(10) = P(X = 10) = \displaystyle\binom{22}{10} (0.02)^{10} (0.98)^{12} \approx \sn{5.196}{-12}
 \]
 \end{example}
+\subsection{Comparison of Binomial and Hypergeometric Distributions}
+The Binomial and Hypergeometric distributions are similar in that they both model the distribution of the number of successes in $n$ trials of an experiment. The difference is that the collection of objects in the hypergeometric distribution is selected from without replacement as apposed the Binomial distribution in which successes and failures do not affect the probability of future outcomes (with replacement).
+\begin{info}
+The Hypergeometric distribution is used when there is a fixed number of objects (successes and~failures) to choose from.
+\par\smallskip
+The Binomial distribution is used when there is no fixed number of objects to be selected from and instead we know the constant probability of a success for all the trials.
+\end{info}
+\begin{example}
+Consider Lisa owns a car dealership and has only 150~red cars and 350~blue cars in stock. A rich~Swedish man enters and picks 100~cars randomly to purchase. Let $X$ be the number of red cars the Swede purchases.
+\par\smallskip
+Since we know the number of successes (150~red cars) and failures (350~blue cars) as well as the number of trials, we have that $X \dist \geom$ and 
+\[
+    f(x) = P(X = x) = \frac{\binom{150}{x} \binom{350}{100-x}}{\binom{500}{100}}
+\]
+Now, consider Lisa has run out of all her stock of cars. She goes to a Swedish car manufacturer's factory which is capable of producing any amount of cars. The factory has a 30\% chance of producing a red~car and otherwise produces a blue~car. Lisa orders 100~cars. Let $X$ be the number of red~cars she receives.
+\par\smallskip
+Since there is no fixed number of cars to choose from but we do know the probability of each car being a success, we have that $X \dist \bino(100, 0.3)$ and
+\[
+    f(x) = P(X = x) = \binom{100}{x} (0.3)^{x} (0.7)^{100-x}
+\]
+\end{example}
