@@ -138,19 +138,22 @@ Now we can calculate the probability using the hypergeometric distribution to de
 So the approximation is accurate to 2 decimal points.
 \end{example}
 \section{Negative Binomial Distribution}
-This distribution is similar to the binomial distribution. We have an experiment with two distinct outcomes, success and failure, with the probability of a success being $p$ and a failure being $(1-p)$. The experiment is repeated until a specified amount of successes, $k$, have been obtained. Let the random variable $X$ be the number of failures obtained before the $k^\text{th}$ success. $X$ has a negative binomial distribution. \\
-$X\sim\nbin(k,p)$
+This distribution is similar to the binomial distribution. We have an experiment with two distinct outcomes, success and failure, with the probability of a success being~$p$ and a failure being~$(1-p)$. The experiment is repeated until a specified amount of successes, $k$, have been obtained. Let the random variable $X$ be the number of failures obtained before the $k^\text{th}$ success. $X$ has a negative binomial distribution. \\
+$X\dist\nbin(k,p)$
 \[
-    f(x) = P(X = x) = \binom{x+k-1}{x} p^k (1-p)^x \for x = 0,1,2,\ldots
+    f(x) = P(X = x) = \binom{x+k-1}{x} p^k (1-p)^x,\:\for x = 0,1,2,\ldots
 \]
 \begin{theory}{Derivation of the Probability Function}
 The above formula describes the probability of $x$ failures and $k$ successes multiplied by the number of different ways of arranging those $x$ failures within the total number of candidate trials $n+k-1$. The final trial cannot be a failure as it is the $k$\ts{th} success.
 \end{theory}
+\begin{info}
+The negative binomial distribution is used to model the number of trials of an experiment before the $k$\ts{th}~success. Thus, if we know the number of trials, this distribution is not appropriate.
+\end{info}
 \begin{example}
 A bad driver never stops at red lights and keeps driving and running red lights until he is arrested. The probability of him getting pulled over by a police man immediately after breaking a light is 0.53 and upon being pulled over 4 times he is arrested. Let $X$ be number of red lights the driver runs without being pulled over before he is arrested. Find $f(x)=P(X=x)$, then find $f(1)$ and $f(7)$. \\
-$X\sim\nbin(4,0.53)$ 
+$X\dist\nbin(4,0.53)$ 
 \[
-    f(x) = P(X = x) = \binom{x+3}{x} (0.53)^4 (0.47)^x \for x = 0,1,2,\ldots
+    f(x) = P(X = x) = \binom{x+3}{x} (0.53)^4 (0.47)^x,\:\for x = 0,1,2,\ldots
 \]
 Hence 
 \[
@@ -163,9 +166,9 @@ and
 \end{example}
 \begin{example}
 The probability of a football player scoring at least one goal in each game is 0.72. When the player scores in 26 games, she is awarded a bonus check. Let $X$ be the number of games in which the player does not score before she is awarded the bonus. Find $f(x)=P(X=x)$, then find $f(7)$, and $f(0)$. \\
-$X\sim\nbin{26}{0.72}$ 
+$X\dist\nbin(26,0.72)$ 
 \[
-    f(x) = P(X = x) = \binom{x+25}{x} (0.72)^{26} (0.28)^x \for x=0,1,2,\ldots
+    f(x) = P(X = x) = \binom{x+25}{x} (0.72)^{26} (0.28)^x,\:\for x=0,1,2,\ldots
 \]
 Hence 
 \[
@@ -177,4 +180,25 @@ and
 \]
 Note that $f(0)$ is simply the probability that the player scores in all of her first 26 games.
 \end{example}
-
+\section{Geometric Distribution}
+This distribution is identical to the negative binomial distribution with $k=1$. We have an experiment with two distinct outcomes, success and failure, with the probability of a success being $p$ and a failure being $(1-p)$. Let the random variable $X$ be the number of failures obtained before the first success. $X$~has a geometric distribution. \\
+$X\dist\geom(p)$
+\[
+    f(x) = P(X = x) = (1 - p)^x p,\:\for x=0,1,2\ldots
+\]
+\begin{example}
+A betting game involves flipping a coin repeatedly. The coin is fixed to that the probability of heads is 0.7 and tails is 0.3. On every flip, if you get heads you may flip again, but otherwise (if you get tails) the game is over. For each heads you flip you get \$100. Let $X$ be the number of heads you get. Find $f(2)$ and $F(3)$.
+\par\smallskip
+$X$ is the number of trials before the first failure (flipping a tails) occurs. Thus, $X \dist \geom$ so
+\[
+    f(x) = P(X = x) = (0.7)^x 0.3,\:\for x=0,1,2\ldots
+\]
+Hence
+\[
+    f(2) = P(X = 2) = (0.7)^2 0.3 = 0.147
+\]
+and
+\[
+    F(3) = P(X \leq 3) = (0.7)^3 0.3 + (0.7)^2 0.3 + (0.7)^1 0.3 + (0.7)^0 0.3 = 0.7599
+\]
+\end{example}
