@@ -202,3 +202,30 @@ and
     F(3) = P(X \leq 3) = (0.7)^3 0.3 + (0.7)^2 0.3 + (0.7)^1 0.3 + (0.7)^0 0.3 = 0.7599
 \]
 \end{example}
+\section{The Poisson Distribution}
+This distribution is somewhat unlike the other distributions we have encountered. Suppose an event occurs an average of $\mu$~times per a specified interval. Let $X$ be the number of times the event occurs in the interval. $X$ has a Poisson distribution. \\
+$X \dist \pois(\mu)$
+\[
+    f(x) = P(X = x) = \frac{\mu^x e^{-\mu}}{x!},\:\for x = 0,1,2,\ldots
+\]
+\begin{theory}{Derivation of the Probability Function}
+\textbf{Derivation from Binomial Distribution}\par
+The Poisson distribution is a limiting case of the Binomial distribution as $n \tendsto \infty$ and~$p \tendsto 0$. If we take $\mu = np$ as a constant as $n$ tends to~infinity we have that~$p$ tends to~0. Thus consider the following:
+\begin{align*}
+    f(x) &= \binom{n}{x} p^x (1-p)^{n-x} 
+          = \frac{\tofact{n}{x}}{x!} \left(\frac{\mu}{n}\right)^x \left(1-\frac{\mu}{n}\right)^{n-x} \\
+         &= \frac{\mu^n}{x!} \times \frac{\tofact{n}{x}}{n^x} \left(1-\frac{\mu}{n}\right)^{n-x} \\
+         &= \frac{\mu^n}{x!} \times \frac{n \times (n-1) \times (n-2) \times \cdots \times (n-x+1)}{n^x} \times \left(1-\frac{\mu}{n}\right)^{n}\left(1-\frac{\mu}{n}\right)^{-x} \\
+         &\text{(Note the middle term's numerator is the product of $n$ terms)} \\
+         &= \frac{\mu^n}{x!} \times \frac{n}{n} \times \frac{n-1}{n} \times \frac{n-2}{n} \times \cdots \times \frac{n-x+1}{n} \times \left(1-\frac{\mu}{n}\right)^{n}\left(1-\frac{\mu}{n}\right)^{-x} \\
+         &= \frac{\mu^n}{x!} \times 1 \times \left(1-\frac{1}{n}\right) \times \left(1-\frac{2}{n}\right) \times \cdots \times \left(1-\frac{x-1}{n}\right) \times \left(1-\frac{\mu}{n}\right)^{n}\left(1-\frac{\mu}{n}\right)^{-x} \\
+\end{align*}
+Now as $n$ approaches infinity we have
+\begin{align*}
+    \lim_{n \tendsto \infty} f(x) 
+    &= \frac{\mu^x}{x!}\times (1)(1)(1)\times\cdots\times(1) \times e^{-\mu} (1)^{-x}
+    ,\:\left(\since e^k = \lim_{n \tendsto \infty}\left(1 + \textstyle\frac{k}{n}\right)^n\right) \\
+    &= \frac{\mu^x e^{-\mu}}{x!},\:\for x = 0,1,2,\ldots
+\end{align*}
+Thus, when $n$ is very large and $p$ is very small we can use the Poisson distribution to approximate a Binomial distribution.
+\end{theory}
