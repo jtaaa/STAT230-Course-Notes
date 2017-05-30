@@ -203,7 +203,24 @@ and
 \]
 \end{example}
 \section{The Poisson Distribution}
-This distribution is somewhat unlike the other distributions we have encountered. Suppose an event occurs an average of $\mu$~times per a specified interval. Let $X$ be the number of times the event occurs in the interval. $X$ has a Poisson distribution. \\
+This distribution is somewhat unlike the other distributions we have encountered. Suppose an event occurs an average of $\mu$~times per a specified interval (time, space, etc.) according to the following conditions:
+\begin{itemize}
+    \item \textbf{Independence} - the number of occurrences in non-overlapping intervals are independent of one another.
+    \item \textbf{Individuality} - for sufficiently short intervals of length $\change t$, the probability of two or more events occurring is very small, that is, events do not occur in clusters. More precisely, as $\change t$ approaches 0 we have
+    \[
+        P(\text{two or more events occurring in $(t, t+\change t)$}) = \ordero(\change t)\:\as t \tendsto 0
+    \]
+    where $\ordero(\change t)$ represents a function which approaches 0 more quickly than $\change t$ does as $\change t$ approaches 0. Thus, we have that
+    \[
+        \frac{\ordero(\change t)}{\change t} \tendsto 0\:\as \change t\tendsto 0
+    \]
+    \item \textbf{Homogeneity} - events occur at a uniform/homogeneous rate~$\rate$ such that the probability of one occurrence in the interval $(t, t+\change t)$ is approximately $\rate t$ for small $\change t$. More precisely we have
+    \[
+        P(\text{one event occurring in $(t, t+\change t)$}) = \rate t + \ordero(\change t)
+        \approx \rate t \:\text{(for small $\change t$)}
+    \]
+\end{itemize}
+Let $X$ be the number of times the event occurs in the interval. $X$ has a Poisson distribution. \\
 $X \dist \pois(\mu)$
 \[
     f(x) = P(X = x) = \frac{\mu^x e^{-\mu}}{x!},\:\for x = 0,1,2,\ldots
