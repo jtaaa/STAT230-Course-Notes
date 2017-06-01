@@ -215,7 +215,7 @@ This distribution is somewhat unlike the other distributions we have encountered
     % \[
     %     \frac{\ordero(\change t)}{\change t} \tendsto 0\:\as \change t\tendsto 0
     % \]
-    \item \textbf{Homogeneity} - events occur at a uniform/homogeneous rate~$\rate$ such that the probability of at least one occurrence in the interval $(t, t+\change t)$ is approximately $\rate \change t$ for small $\change t$.
+    \item \textbf{Homogeneity} - events occur at a uniform/homogeneous rate~$\rate$ such that the probability of one occurrence in the interval $(t, t+\change t)$ is $\rate \change t$ for small $\change t$.
     % More precisely we have
     % \[
     %     P(\text{one event occurring in $(t, t+\change t)$}) = \rate t + \ordero(\change t)
@@ -298,6 +298,7 @@ Thus, if the inductive hypothesis holds for $x$ then it also holds for $x+1$. So
 \begin{info}
 Note that this derivation is fairly complex. If at first you do not understand don't worry. Try reading it again later.
 \end{info}
+\subsection{Poisson Estimate to the Binomial Distribution}
 \begin{theory}{Derivation from Binomial Distribution}
 The Poisson distribution is a limiting case of the Binomial distribution as $n \tendsto \infty$ and~$p \tendsto 0$. If we take $\avg = np$ as a constant as $n$ tends to~infinity we have that~$p$ tends to~0. Thus consider the following:
 \begin{align*}
@@ -318,3 +319,9 @@ Now as $n$ approaches infinity we have
 \end{align*}
 Thus, when $n$ is very large and $p$ is very small we can use the Poisson distribution to approximate a Binomial distribution.
 \end{theory}
+% Examples #;target
+\subsection{Parameters $\avg$ and $\rate$}
+The parameters $\avg$ and $\rate$ are, as you might expect, strongly linked. The first, $\avg$, is a average number of occurrences in a specified interval, whereas $\rate$ is the uniform rate of occurrence per unit of the interval. Thus if $t$ is the amount of units of time, space, etc., then $\rate t = \avg$.
+\begin{example}
+    Suppose a fire station gets 15 phone call every 5 minutes. The rate of occurrence per minute is $\rate = 3$. Then, if we interested in the number of phone calls in 10 minutes, we have that the average number of phone calls in an interval of ten minutes is $\avg = 10\rate = 30$.
+\end{example}
