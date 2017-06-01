@@ -227,6 +227,7 @@ $X \dist \pois(\avg)$
 \[
     f(x) = P(X = x) = \frac{\avg^x e^{-\avg}}{x!},\:\for x = 0,1,2,\ldots
 \]
+\pagebreak[3]
 \begin{theory}{Derivation of the Probability Function}
 Based on the conditions above we can derive the probability function. Let $f_t(x)$ be the probability of $x$ occurrences in an interval of length $t$. Now we consider $f_{t + \change t}(x)$. We will use the the relationship between $f_t(x)$ and $f_{t + \change t}(x)$ and induction to show the result.
 \par\smallskip
@@ -245,19 +246,54 @@ which resolves to
 \]
 Note for an interval of length 0, the probability of 0 zero events must be 1. So the constant $C$ must be 1. Hence, we have
 \[
-    f_t = e^{-\rate t}
+    f_t(0) = e^{-\rate t}
 \]
 \par\smallskip
 Note that there are only two ways to get a total of $x \neq 0$ occurrences in an interval of length $t + \change t$ for a sufficiently small $\change t$ since by \textbf{individuality} the probability of two or more events in the interval $(t, t + \change t)$ is negligible. Either there are $x$ occurrences by time $t$ or there are $(x-1)$ occurrences by time $t$ and 1 in the interval $(t, t + \change t)$. This and the property of \textbf{independence} lead to
 \begin{align*}
     f_{t + \change t}(x) &= f_t(x)(1 - \rate \change t) + f_t(x - 1)(\rate \change t) \\
     f_{t + \change t}(x) &= f_t(x) - f_t(x)(\rate \change t) + f_t(x - 1)(\rate \change t) \\
-    \frac{f_{t + \change t}(x) - f_t(x)}{\change t} &= \rate [f_t(x) + f_t(x-1)]
+    \frac{f_{t + \change t}(x) - f_t(x)}{\change t} + \rate f_t(x) &= \rate f_t(x-1)
 \end{align*}
-Now as $\change t \tendsto 0$ we have
+Now as $\change t \tendsto 0$ we have the differential equation
+\begin{align}
+    \deriv{t} f_t(x) + \rate f_t(x) &= \rate f_t(x-1) \nonumber \\
+    \deriv{t} [e^{\rate t} f_t(x)] &= e^{\rate t} \rate f_t(x-1) \label{eq: Differential}
+\end{align}
+Now consider when $n = 1$, we have
+\[
+    \deriv{t} [e^{\rate t} f_t(1)] = e^{\rate t} \rate f_t(0)
+\]
+Substituting the result, $f_t(0)$, we got earlier we have
+\[
+    \deriv{t} [e^{\rate t} f_t(1)] = e^{\rate t} \rate e^{-\rate t} = \lambda  
+\]
+Integrating both sides we have
+\[
+    e^{\rate t} f_t(1) = \rate t + C
+\]
+Note for an interval of length 0, the probability of 0 zero events must be 1. So the constant $C$ must be 1. Hence, we have
+\[
+    f_t(1) = \rate t e^{-\rate t}
+\]
+\par\smallskip
+We now use induction to generalize this result for an arbitrary $x$. Our inductive hypothesis is as follows
+\[
+    f_t(x) = \frac{(\rate t)^x e^{-\rate t}}{x!}
+\]
+We have already shown that our hypothesis holds for $x = 0$ and $x = 1$. Now we assume our hypothesis is true and recall the differential equation \eqref{eq: Differential} with $x+1$. We have
 \begin{align*}
-    \deriv{t} f_t(x) = \rate [f_t(x) + f_t(x-1)]
+    \deriv{t} [e^{\rate t} f_t(x+1)] &= e^{\rate t} \rate f_t(x) \\
+    \deriv{t} [e^{\rate t} f_t(x+1)] &= e^{\rate t} \rate \frac{(\rate t)^x e^{-\rate t}}{x!} 
+    = \frac{\rate^{x+1} t^x}{x!} \\
+    e^{\rate t} f_t(x+1) &= \int \frac{\rate^{x+1}}{x!} t^x \d{t} 
+    = \frac{\rate^{x+1}}{x!}\frac{t^{x+1}}{(x+1)} + C
 \end{align*}
+Again using the boundary condition, with an interval of length 0, we have that $C$ must be 1. Thus, we have
+\[
+    f_t(x+1) = \frac{(\rate t)^{x+1} e^{-\rate t}}{(x+1)!}
+\]
+Thus, if the inductive hypothesis holds for $x$ then it also holds for $x+1$. So by principle of mathematical induction we have that the hypothesis is true for all natural numbers $x$. 
 \end{theory}
 \begin{info}
 Note that this derivation is fairly complex. If at first you do not understand don't worry. Try reading it again later.
