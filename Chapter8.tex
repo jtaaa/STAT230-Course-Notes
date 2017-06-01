@@ -1,0 +1,284 @@
+\chapter{Discrete Distributions}
+As we briefly mentioned in the previous chapter, \textbf{probability distributions} are the set of pairs~$(x,f(x))$ for all possible outcomes~$x$ of a random variable~$X$. Many probability distributions appear commonly on \rv's of similar ``real-life'' processes. In this chapter we define a few of these common distributions on discrete random variables, when they occur and how to use them to calculate probabilities.
+\begin{info}
+It is important to understand distributions early-on. Distributions, probability functions and cumulative distribution functions are defined on random variables \textbf{not} experiments/processes or sample spaces.
+\end{info}
+
+\section{Uniform Distribution}
+Suppose $X$ can take a finite set of consecutive values with each of the values being equally likely. That is $\range{X} = \{\, a,a+1,a+2,\ldots,b \,\}$ with each of $a,a+1,a+2,\ldots,b$ being equally likely. Then $X$ has a discrete uniform distribution and we denote it \\
+$X \dist \duni$
+\[
+    f(x) = P(X = x) = \left\{
+    \begin{array}{c@{\hspace{1em}}l}
+        \displaystyle\frac{1}{b - a + 1} & \for\all x\in\range{X} \\[1em]
+         0 & \ow 
+    \end{array}\right.
+\]
+\begin{theory}{Derivation of Probability Function}
+The probability of each value of the \rv~is easy to calculate since they are all equal and must add up to 1. Therefore, $k \times P(X = a) = 1$ where $k$ is the number of possible values of $X$. The number of possible values of $X$ is $b - (a - 1) = b - a + 1$ since $\range{X}$ is between $a$ and $b$ inclusive.
+\end{theory}
+\begin{info}
+Another way to define the probability of each value of a random variable with this sample space is 
+\[
+\frac{1}{\text{Number of possible values in $\range{X}$}}
+\]
+\end{info}
+\section{Hypergeometric Distribution}
+Suppose we have a collections of $N$ objects which can be classified into two different types, successes and failures. There are $r$ successes and $N -r$ failures. We pick $n$ objects at random without replacement, and let the random variable $X$ be the number of successes obtained. $X$ has a hypergeometric distribution and we denote it \\
+$X\dist\hype$
+\[
+    f(x) = P(X = x) =
+    \frac{\displaystyle\binom{r}{x} \binom{N-r}{n-x}}{\displaystyle\binom{N}{n}},\:\for x\leq\min(r,n)
+\]
+\begin{theory}{Derivation of Probability Function}
+We will use the counting techniques we previously learnt to calculate the probability function. We note that there are $\binom{N}{n}$ ways to select $n$ objects from the total of $N$ so the sample space contains $\binom{N}{n}$~points. Now the number of ways of choosing $x$ successes from the total of $r$ is $\binom{r}{x}$ \textbf{and independently} the number of ways to choose the remainder of objects, $n-x$, from the total remaining objects, $N - r$, is $\binom{N - r}{n - x}$. Thus the probability of~$X = x$ by the multiplication rule is the product of those expressions divided by the number of points in the sample space, $\frac{\binom{r}{x}\binom{N-r}{n-x}}{\binom{N}{n}}$.
+\end{theory}
+\begin{info}
+It is important to understand that the terms ``successes'' and ``failures'' are simply placeholder that represent a type of outcome and its complement. They could be replaced by ``wins'' and ``losses'', ``whites'' and ``colors'', or any other titles that are distinct groups with a union that spans the whole sample space.
+\end{info}
+\begin{info}
+    This is used when we know how many items (n) are chosen at random from a set with two different types and we know the amount of each type in the set.
+\end{info}
+\begin{example}
+There is a basket with 11 fruit, 9 apples and 2 oranges. 4 fruit are picked at random from the basket. Let random variable $X$ be the number of apples selected. Find $f(x)=P(X=x)$. Then find $f(3)$. \\
+$X\dist\hype$. $N=11,n=4,r=9$.
+\[
+    f(x) = P(X = x) = \displaystyle\frac{\displaystyle\binom{9}{x} \binom{2}{4-x}} {\displaystyle\binom{11}{4}},\:\for x \leq 4
+\]
+Hence 
+\[
+    f(7) = P(X = 7) = \displaystyle\frac{\displaystyle\binom{9}{3} \binom{2}{1}} {\displaystyle\binom{11}{4}} \approx 0.509
+\]
+\end{example}
+\begin{example}
+15 cards are drawn from a deck of 52 at random. Let $X$ be the number of red cards drawn. Find $f(x)=P(X=x)$. Then find $f(7)$. \\
+$X\dist\hype$. $N=52,n=15,r=26$.
+\[
+    f(x) = P(X = x) = \displaystyle\frac{\displaystyle\binom{26}{x} \binom{26}{15-x}} {\displaystyle\binom{52}{15}},\:\for x \leq 15
+\]
+Hence \[
+    f(7) = P(X = 7) = \displaystyle\frac{\displaystyle\binom{26}{7} \binom{26}{8}} {\displaystyle\binom{52}{15}} \approx 0.229
+\]
+\end{example}
+\section{Binomial Distribution}
+Suppose we have an experiment with two distinct outcomes, success and failure, with the probability of a success being $p$ and a failure being $(1-p)$. The experiment is repeated $n$ times independently (these are called trials). Let the random variable $X$ be the number of successes obtained. $X$ has a binomial distribution. \\
+$X\dist\bino(n,p)$
+\[
+    f(x) = P(X = x) = \displaystyle\binom{n}{x}p^x (1-p)^{n-x},\:\for x=1,\ldots,n
+\]
+\begin{theory}{Derivation of Probability Function}
+Since there are $n$ positions in which to put the $x$ successes there are $\binom{n}{x}$ unique arrangements of successes and failures that satisfy ``$X = x$''. Each of these arrangements has probability $p^x (1-p)^{n-x}$ since the probability of obtaining $x$ successes is $p^x$ and the probability of obtaining $n-x$ failures is $(1-p)^{n-x}$. So the probability that $X = x$, that is that any of the arrangements occur, is the sum of the probability of each unique arrangement, $\binom{n}{x}p^x (1-p)^{n-x}$.
+\end{theory}
+\begin{info}
+The above formula describes the probability of $x$ success and $(n-x)$ failures multiplied by the number of different ways of arranging those successes within the total number of trials of the experiment.
+\end{info}
+\begin{info}
+Each of the n individual experiments is called a ``Bernoulli trial'' and the entire process of n trials is called a Bernoulli process or a Binomial process.
+\end{info}
+\begin{example}
+A loaded coin is flipped 10 times, with a probability of a heads occurring being 0.4. Let random variable $X$ be the number of heads that occur. Find $f(x)=P(X=x)$, then find $f(3)$. \\
+$X\dist\bino(10,0.4)$.
+\[
+    f(x) = P(X = x) = \displaystyle\binom{10}{x} (0.4)^x (0.6)^{10-x},\:\for x = 1,\ldots,10
+\]
+Hence 
+\[
+    f(3) = P(X = 3) = \displaystyle\binom{10}{3} (0.4)^3 (0.6)^7 \approx 0.215
+\]
+\end{example}
+\begin{example}
+A football season in a university league has 22 games. The probability of each game being abandoned (because of bad weather or other hazards) is 0.02. Let $X$ be the number of games abandoned throughout the whole season. Find $f(x)=P(X=x)$, then find $f(2)$ and $f(10)$. \\
+$X\dist\bino(22,0.02)$.
+\[
+    f(x) = P(X = x) = \displaystyle\binom{22}{x} (0.02)^x (0.98)^{22-x},\:\for x = 1,\ldots,22
+\]
+Hence 
+\[
+    f(2) = P(X = 2) = \displaystyle\binom{22}{2} (0.02)^2 (0.98)^20 \approx 0.062
+\]
+and 
+\[
+    f(10) = P(X = 10) = \displaystyle\binom{22}{10} (0.02)^{10} (0.98)^{12} \approx \sn{5.196}{-12}
+\]
+\end{example}
+\subsection{Comparison of Binomial and Hypergeometric Distributions}
+The Binomial and Hypergeometric distributions are similar in that they both model the distribution of the number of successes in $n$ trials of an experiment. The difference is that the collection of objects in the hypergeometric distribution is selected from without replacement as apposed the Binomial distribution in which successes and failures do not affect the probability of future outcomes (with replacement).
+\begin{info}
+The Hypergeometric distribution is used when there is a fixed number of objects (successes and~failures) to choose from.
+\par\smallskip
+The Binomial distribution is used when there is no fixed number of objects to be selected from and instead we know the constant probability of a success for all the trials.
+\end{info}
+\begin{example}
+Consider Lisa owns a car dealership and has only 750~red cars and 1250~blue cars in stock. A rich~Swedish man enters and picks 50~cars randomly to purchase. Let $X$ be the number of red cars the Swede purchases.
+\par\smallskip
+Since we know the number of successes (750~red cars) and failures (1250~blue cars) as well as the number of trials, we have that $X \dist \geom$ and 
+\[
+    f(x) = P(X = x) = \frac{\binom{750}{x} \binom{1250}{50-x}}{\binom{2000}{50}}
+\]
+Now, consider Lisa has run out of all her stock of cars. She goes to a Swedish car manufacturer's factory which is capable of producing any amount of cars. The factory has a 37.5\% chance of producing a red~car and otherwise produces a blue~car. Lisa orders 50~cars. Let $X$ be the number of red~cars she receives.
+\par\smallskip
+Since there is no fixed number of cars to choose from but we do know the probability of each car being a success, we have that $X \dist \bino(50, 0.375)$ and
+\[
+    f(x) = P(X = x) = \binom{50}{x} (0.375)^{x} (0.625)^{50-x}
+\]
+\end{example}
+\subsection{Binomial Estimate of the Hypergeometric Distribution}
+When the number of objects to choose from, $N$, is very large and the number of objects being chosen, $n$, is relatively small in a hypergeometric distribution, we have that the probability of a success changes only very slightly due to lack of replacement. Since the number of objects is so large choosing a small number of objects without replacement barely changes the probability of a success so $p$ is relatively constant. Thus we can fairly accurately estimate the distribution with a binomial distribution with the original probability of a success for the first choice.
+\begin{example}
+Consider the previous example, suppose the rich Swedish man purchased 50 cars from Lisa. What is the probability that he purchases 20 red cars?
+\par\smallskip
+The number of cars Lisa has in stock is very large and the number of cars being bought is fairly small. Thus we can approximate the distribution with the probability of a success being $750/2000 = 0.375$. We have
+\[
+    f(20) = P(X = 20) = \binom{50}{20} (0.375)^{20} (0.625)^{30} \approx 0.1072
+\]
+Now we can calculate the probability using the hypergeometric distribution to determine how good an estimate this is. We have
+\[
+    f(20) = P(X = 20) = \frac{\binom{750}{20} \binom{1250}{30}}{\binom{2000}{50}} \approx 0.1084
+\]
+So the approximation is accurate to 2 decimal points.
+\end{example}
+\section{Negative Binomial Distribution}
+This distribution is similar to the binomial distribution. We have an experiment with two distinct outcomes, success and failure, with the probability of a success being~$p$ and a failure being~$(1-p)$. The experiment is repeated until a specified amount of successes, $k$, have been obtained. Let the random variable $X$ be the number of failures obtained before the $k^\text{th}$ success. $X$ has a negative binomial distribution. \\
+$X\dist\nbin(k,p)$
+\[
+    f(x) = P(X = x) = \binom{x+k-1}{x} p^k (1-p)^x,\:\for x = 0,1,2,\ldots
+\]
+\begin{theory}{Derivation of the Probability Function}
+The above formula describes the probability of $x$ failures and $k$ successes multiplied by the number of different ways of arranging those $x$ failures within the total number of candidate trials $n+k-1$. The final trial cannot be a failure as it is the $k$\ts{th} success.
+\end{theory}
+\begin{info}
+The negative binomial distribution is used to model the number of trials of an experiment before the $k$\ts{th}~success. Thus, if we know the number of trials, this distribution is not appropriate.
+\end{info}
+\begin{example}
+A bad driver never stops at red lights and keeps driving and running red lights until he is arrested. The probability of him getting pulled over by a police man immediately after breaking a light is 0.53 and upon being pulled over 4 times he is arrested. Let $X$ be number of red lights the driver runs without being pulled over before he is arrested. Find $f(x)=P(X=x)$, then find $f(1)$ and $f(7)$. \\
+$X\dist\nbin(4,0.53)$ 
+\[
+    f(x) = P(X = x) = \binom{x+3}{x} (0.53)^4 (0.47)^x,\:\for x = 0,1,2,\ldots
+\]
+Hence 
+\[
+    f(1) = P(X = 1) = \binom{4}{1} (0.53)^4 (0.47) \approx 0.148
+\]
+and
+\[
+    f(7) = P(X = 7) = \binom{10}{7} (0.53)^4 (0.47)^7 \approx 0.048
+\]
+\end{example}
+\begin{example}
+The probability of a football player scoring at least one goal in each game is 0.72. When the player scores in 26 games, she is awarded a bonus check. Let $X$ be the number of games in which the player does not score before she is awarded the bonus. Find $f(x)=P(X=x)$, then find $f(7)$, and $f(0)$. \\
+$X\dist\nbin(26,0.72)$ 
+\[
+    f(x) = P(X = x) = \binom{x+25}{x} (0.72)^{26} (0.28)^x,\:\for x=0,1,2,\ldots
+\]
+Hence 
+\[
+    f(7) = P(X = 7) = \binom{32}{7} (0.72)^{26} (0.28)^7 \approx 0.089
+\]
+and 
+\[
+    f(0) = P(X = 0) = \binom{25}{0} (0.72)^{26} (0.28)^0 = 0.72^{26} \approx \sn{1.953}{-4}
+\]
+Note that $f(0)$ is simply the probability that the player scores in all of her first 26 games.
+\end{example}
+\section{Geometric Distribution}
+This distribution is identical to the negative binomial distribution with $k=1$. We have an experiment with two distinct outcomes, success and failure, with the probability of a success being $p$ and a failure being $(1-p)$. Let the random variable $X$ be the number of failures obtained before the first success. $X$~has a geometric distribution. \\
+$X\dist\geom(p)$
+\[
+    f(x) = P(X = x) = (1 - p)^x p,\:\for x=0,1,2\ldots
+\]
+\begin{example}
+A betting game involves flipping a coin repeatedly. The coin is fixed to that the probability of heads is 0.7 and tails is 0.3. On every flip, if you get heads you may flip again, but otherwise (if you get tails) the game is over. For each heads you flip you get \$100. Let $X$ be the number of heads you get. Find $f(2)$ and $F(3)$.
+\par\smallskip
+$X$ is the number of trials before the first failure (flipping a tails) occurs. Thus, $X \dist \geom$ so
+\[
+    f(x) = P(X = x) = (0.7)^x 0.3,\:\for x=0,1,2\ldots
+\]
+Hence
+\[
+    f(2) = P(X = 2) = (0.7)^2 0.3 = 0.147
+\]
+and
+\[
+    F(3) = P(X \leq 3) = (0.7)^3 0.3 + (0.7)^2 0.3 + (0.7)^1 0.3 + (0.7)^0 0.3 = 0.7599
+\]
+\end{example}
+\section{The Poisson Distribution}
+This distribution is somewhat unlike the other distributions we have encountered. Suppose an event occurs an average of $\avg$~times per a specified interval (time, space, etc.) according to the following conditions:
+\begin{itemize}
+    \item \textbf{Independence} - the number of occurrences in non-overlapping intervals are independent of one another.
+    \item \textbf{Individuality} - events do not occur in clusters, that is, for sufficiently short intervals of length $\change t$, the probability of two or more events occurring is extremely close to 0 (negligible).
+    % More precisely, as $\change t$ approaches 0 we have
+    % \[
+    %     P(\text{two or more events occurring in $(t, t+\change t)$}) = \ordero(\change t)\:\as t \tendsto 0
+    % \]
+    % where $\ordero(\change t)$ represents a function which approaches 0 more quickly than $\change t$ does as $\change t$ approaches 0. Thus, we have that
+    % \[
+    %     \frac{\ordero(\change t)}{\change t} \tendsto 0\:\as \change t\tendsto 0
+    % \]
+    \item \textbf{Homogeneity} - events occur at a uniform/homogeneous rate~$\rate$ such that the probability of at least one occurrence in the interval $(t, t+\change t)$ is approximately $\rate \change t$ for small $\change t$.
+    % More precisely we have
+    % \[
+    %     P(\text{one event occurring in $(t, t+\change t)$}) = \rate t + \ordero(\change t)
+    %     \approx \rate t \:\text{(for small $\change t$)}
+    % \]
+\end{itemize}
+Let $X$ be the number of times the event occurs in the interval. $X$ has a Poisson distribution. \\
+$X \dist \pois(\avg)$
+\[
+    f(x) = P(X = x) = \frac{\avg^x e^{-\avg}}{x!},\:\for x = 0,1,2,\ldots
+\]
+\begin{theory}{Derivation of the Probability Function}
+Based on the conditions above we can derive the probability function. Let $f_t(x)$ be the probability of $x$ occurrences in an interval of length $t$. Now we consider $f_{t + \change t}(x)$. We will use the the relationship between $f_t(x)$ and $f_{t + \change t}(x)$ and induction to show the result.
+\par\smallskip
+Firstly, we must find, $f_t(0)$, the probability of~0 occurrences in an interval of length $t$. Consider the probability, $f_{t + \change t}(0)$ that their are~0 occurrences in an interval of length $t + \change t$. That is, the probability of no events in the interval of length $t$ and no events in the interval of length $\change t$. We have
+\begin{align*}
+    f_{t+\change t}(0) &= f_t(0)(1 - \rate \change t) \\
+    \frac{f_{t+\change t}(0) - f_t(0)}{\change t} &= -\rate f_t(0) \\
+\end{align*}
+As $\change t \tendsto 0$, we have the differential equation
+\[
+    \deriv{t} f_t(0) = -\rate f_t(0)
+\]
+which resolves to
+\[
+    f_t(0) = Ce^{-\rate t}
+\]
+Note for an interval of length 0, the probability of 0 zero events must be 1. So the constant $C$ must be 1. Hence, we have
+\[
+    f_t = e^{-\rate t}
+\]
+\par\smallskip
+Note that there are only two ways to get a total of $x \neq 0$ occurrences in an interval of length $t + \change t$ for a sufficiently small $\change t$ since by \textbf{individuality} the probability of two or more events in the interval $(t, t + \change t)$ is negligible. Either there are $x$ occurrences by time $t$ or there are $(x-1)$ occurrences by time $t$ and 1 in the interval $(t, t + \change t)$. This and the property of \textbf{independence} lead to
+\begin{align*}
+    f_{t + \change t}(x) &= f_t(x)(1 - \rate \change t) + f_t(x - 1)(\rate \change t) \\
+    f_{t + \change t}(x) &= f_t(x) - f_t(x)(\rate \change t) + f_t(x - 1)(\rate \change t) \\
+    \frac{f_{t + \change t}(x) - f_t(x)}{\change t} &= \rate [f_t(x) + f_t(x-1)]
+\end{align*}
+Now as $\change t \tendsto 0$ we have
+\begin{align*}
+    \deriv{t} f_t(x) = \rate [f_t(x) + f_t(x-1)]
+\end{align*}
+\end{theory}
+\begin{info}
+Note that this derivation is fairly complex. If at first you do not understand don't worry. Try reading it again later.
+\end{info}
+\begin{theory}{Derivation from Binomial Distribution}
+The Poisson distribution is a limiting case of the Binomial distribution as $n \tendsto \infty$ and~$p \tendsto 0$. If we take $\avg = np$ as a constant as $n$ tends to~infinity we have that~$p$ tends to~0. Thus consider the following:
+\begin{align*}
+    f(x) &= \binom{n}{x} p^x (1-p)^{n-x} 
+          = \frac{\tofact{n}{x}}{x!} \left(\frac{\avg}{n}\right)^x \left(1-\frac{\avg}{n}\right)^{n-x} \\
+         &= \frac{\avg^n}{x!} \times \frac{\tofact{n}{x}}{n^x} \left(1-\frac{\avg}{n}\right)^{n-x} \\
+         &= \frac{\avg^n}{x!} \times \frac{n \times (n-1) \times (n-2) \times \cdots \times (n-x+1)}{n^x} \times \left(1-\frac{\avg}{n}\right)^{n}\left(1-\frac{\avg}{n}\right)^{-x} \\
+         &\text{(Note the middle term's numerator is the product of $n$ terms)} \\
+         &= \frac{\avg^n}{x!} \times \frac{n}{n} \times \frac{n-1}{n} \times \frac{n-2}{n} \times \cdots \times \frac{n-x+1}{n} \times \left(1-\frac{\avg}{n}\right)^{n}\left(1-\frac{\avg}{n}\right)^{-x} \\
+         &= \frac{\avg^n}{x!} \times 1 \times \left(1-\frac{1}{n}\right) \times \left(1-\frac{2}{n}\right) \times \cdots \times \left(1-\frac{x-1}{n}\right) \times \left(1-\frac{\avg}{n}\right)^{n}\left(1-\frac{\avg}{n}\right)^{-x} \\
+\end{align*}
+Now as $n$ approaches infinity we have
+\begin{align*}
+    \lim_{n \tendsto \infty} f(x) 
+    &= \frac{\avg^x}{x!}\times (1)(1)(1)\times\cdots\times(1) \times e^{-\avg} (1)^{-x}
+    ,\:\left(\since e^k = \lim_{n \tendsto \infty}\left(1 + \textstyle\frac{k}{n}\right)^n\right) \\
+    &= \frac{\avg^x e^{-\avg}}{x!},\:\for x = 0,1,2,\ldots
+\end{align*}
+Thus, when $n$ is very large and $p$ is very small we can use the Poisson distribution to approximate a Binomial distribution.
+\end{theory}
