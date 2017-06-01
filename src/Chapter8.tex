@@ -206,19 +206,21 @@ and
 This distribution is somewhat unlike the other distributions we have encountered. Suppose an event occurs an average of $\avg$~times per a specified interval (time, space, etc.) according to the following conditions:
 \begin{itemize}
     \item \textbf{Independence} - the number of occurrences in non-overlapping intervals are independent of one another.
-    \item \textbf{Individuality} - for sufficiently short intervals of length $\change t$, the probability of two or more events occurring is very small, that is, events do not occur in clusters. More precisely, as $\change t$ approaches 0 we have
-    \[
-        P(\text{two or more events occurring in $(t, t+\change t)$}) = \ordero(\change t)\:\as t \tendsto 0
-    \]
-    where $\ordero(\change t)$ represents a function which approaches 0 more quickly than $\change t$ does as $\change t$ approaches 0. Thus, we have that
-    \[
-        \frac{\ordero(\change t)}{\change t} \tendsto 0\:\as \change t\tendsto 0
-    \]
-    \item \textbf{Homogeneity} - events occur at a uniform/homogeneous rate~$\rate$ such that the probability of one occurrence in the interval $(t, t+\change t)$ is approximately $\rate t$ for small $\change t$. More precisely we have
-    \[
-        P(\text{one event occurring in $(t, t+\change t)$}) = \rate t + \ordero(\change t)
-        \approx \rate t \:\text{(for small $\change t$)}
-    \]
+    \item \textbf{Individuality} - events do not occur in clusters, that is, for sufficiently short intervals of length $\change t$, the probability of two or more events occurring is extremely close to 0 (negligible).
+    % More precisely, as $\change t$ approaches 0 we have
+    % \[
+    %     P(\text{two or more events occurring in $(t, t+\change t)$}) = \ordero(\change t)\:\as t \tendsto 0
+    % \]
+    % where $\ordero(\change t)$ represents a function which approaches 0 more quickly than $\change t$ does as $\change t$ approaches 0. Thus, we have that
+    % \[
+    %     \frac{\ordero(\change t)}{\change t} \tendsto 0\:\as \change t\tendsto 0
+    % \]
+    \item \textbf{Homogeneity} - events occur at a uniform/homogeneous rate~$\rate$ such that the probability of at least one occurrence in the interval $(t, t+\change t)$ is approximately $\rate \change t$ for small $\change t$.
+    % More precisely we have
+    % \[
+    %     P(\text{one event occurring in $(t, t+\change t)$}) = \rate t + \ordero(\change t)
+    %     \approx \rate t \:\text{(for small $\change t$)}
+    % \]
 \end{itemize}
 Let $X$ be the number of times the event occurs in the interval. $X$ has a Poisson distribution. \\
 $X \dist \pois(\avg)$
@@ -226,7 +228,41 @@ $X \dist \pois(\avg)$
     f(x) = P(X = x) = \frac{\avg^x e^{-\avg}}{x!},\:\for x = 0,1,2,\ldots
 \]
 \begin{theory}{Derivation of the Probability Function}
-\textbf{Derivation from Binomial Distribution}\par
+Based on the conditions above we can derive the probability function. Let $f_t(x)$ be the probability of $x$ occurrences in an interval of length $t$. Now we consider $f_{t + \change t}(x)$. We will use the the relationship between $f_t(x)$ and $f_{t + \change t}(x)$ and induction to show the result.
+\par\smallskip
+Firstly, we must find, $f_t(0)$, the probability of~0 occurrences in an interval of length $t$. Consider the probability, $f_{t + \change t}(0)$ that their are~0 occurrences in an interval of length $t + \change t$. That is, the probability of no events in the interval of length $t$ and no events in the interval of length $\change t$. We have
+\begin{align*}
+    f_{t+\change t}(0) &= f_t(0)(1 - \rate \change t) \\
+    \frac{f_{t+\change t}(0) - f_t(0)}{\change t} &= -\rate f_t(0) \\
+\end{align*}
+As $\change t \tendsto 0$, we have the differential equation
+\[
+    \deriv{t} f_t(0) = -\rate f_t(0)
+\]
+which resolves to
+\[
+    f_t(0) = Ce^{-\rate t}
+\]
+Note for an interval of length 0, the probability of 0 zero events must be 1. So the constant $C$ must be 1. Hence, we have
+\[
+    f_t = e^{-\rate t}
+\]
+\par\smallskip
+Note that there are only two ways to get a total of $x \neq 0$ occurrences in an interval of length $t + \change t$ for a sufficiently small $\change t$ since by \textbf{individuality} the probability of two or more events in the interval $(t, t + \change t)$ is negligible. Either there are $x$ occurrences by time $t$ or there are $(x-1)$ occurrences by time $t$ and 1 in the interval $(t, t + \change t)$. This and the property of \textbf{independence} lead to
+\begin{align*}
+    f_{t + \change t}(x) &= f_t(x)(1 - \rate \change t) + f_t(x - 1)(\rate \change t) \\
+    f_{t + \change t}(x) &= f_t(x) - f_t(x)(\rate \change t) + f_t(x - 1)(\rate \change t) \\
+    \frac{f_{t + \change t}(x) - f_t(x)}{\change t} &= \rate [f_t(x) + f_t(x-1)]
+\end{align*}
+Now as $\change t \tendsto 0$ we have
+\begin{align*}
+    \deriv{t} f_t(x) = \rate [f_t(x) + f_t(x-1)]
+\end{align*}
+\end{theory}
+\begin{info}
+Note that this derivation is fairly complex. If at first you do not understand don't worry. Try reading it again later.
+\end{info}
+\begin{theory}{Derivation from Binomial Distribution}
 The Poisson distribution is a limiting case of the Binomial distribution as $n \tendsto \infty$ and~$p \tendsto 0$. If we take $\avg = np$ as a constant as $n$ tends to~infinity we have that~$p$ tends to~0. Thus consider the following:
 \begin{align*}
     f(x) &= \binom{n}{x} p^x (1-p)^{n-x} 
