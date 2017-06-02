@@ -325,3 +325,10 @@ The parameters $\avg$ and $\rate$ are, as you might expect, strongly linked. The
 \begin{example}
     Suppose a fire station gets 15 phone call every 5 minutes. The rate of occurrence per minute is $\rate = 3$. Then, if we interested in the number of phone calls in 10 minutes, we have that the average number of phone calls in an interval of ten minutes is $\avg = 10\rate = 30$.
 \end{example}
+\subsection{Distinguishing the Poisson Distribution from other Distributions}
+In order to distinguish when to use and not to use a Poisson distribution, we can ask ourselves a few simple questions to rule out the Poisson process.
+\begin{itemize}
+    \item \textit{Is it reasonable to ask how often an event does not occur?}
+    \item \textit{Is it possible to specify an upper limit on the value the random variable in question can take?}
+\end{itemize}
+If the answer to either of these questions is yes, then the random variable in question does not follow a Poisson distribution and the experiment is not a Poisson process.
