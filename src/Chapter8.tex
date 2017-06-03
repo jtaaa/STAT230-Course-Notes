@@ -332,3 +332,22 @@ In order to distinguish when to use and not to use a Poisson distribution, we ca
     \item \textit{Is it possible to specify an upper limit on the value the random variable in question can take?}
 \end{itemize}
 If the answer to either of these questions is yes, then the random variable in question does not follow a Poisson distribution and the experiment is not a Poisson process.
+\section{Combining Models}
+It is possible for the solution to a problem to require using more than one distribution to model the probability of a complex event. Below are a few examples where it is necessary to use more than one distribution.
+\begin{example}
+    Suppose a type of spider catches flies in their webs at a rate of 2 per hour. If there are 10 such spiders, what is the probability that more than 6 spiders catch less than 4 flies in 2 hours?
+    \par\smallskip
+    First we find the probability that a single spider catches less than 4 flies in 2 hours. Let $X$ be the number of flies the spider catches in 2 hours. The average number of flies caught in 2 hours is $\avg = 4$. Thus, we have $X \dist \pois(4)$.
+    \[
+        P(X < 4) = \frac{4^0 e^{-4}}{0!} + \frac{4^1 e^{-4}}{1!} + \frac{4^2 e^{-4}}{2!} + \frac{4^3 e^{-4}}{3!} 
+        \approx 0.43
+    \]
+    Now, we can find the probability that more than 6 spiders catch less than 4 flies in 2 hours with the knowledge that each spider has a $0.43$ chance of doing so. Let $Y$ be the number of spiders that catch less than 4 flies in 2 hours. We have $Y \dist \bino(10,0.43)$.
+    \begin{align*}
+        P(Y > 6) &= \binom{10}{7}0.43^7 (0.57)^{3} + \binom{10}{8}0.43^8 (0.57)^{2} + \binom{10}{9}0.43^9 (0.57)^{1} + \binom{10}{10}0.43^{10} (0.57)^{0} \\
+        &\approx 0.081
+    \end{align*}
+\end{example}
+\begin{info}
+It is important to remember that more than one distribution can be necessary. A common mistake is to correctly use one distribution and not realize the need for another.
+\end{info}
