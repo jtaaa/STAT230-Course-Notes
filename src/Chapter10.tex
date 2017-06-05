@@ -1,0 +1,113 @@
+\chapter{Continuous Random Variables}
+
+% ------------------------------------------------------ %
+\section{Computer Generated Random Variables}
+Virtually all computer software have built in ``psuedo-random number generators'' that simulate observations of a random variable $U$, from a uniform distribution, $U(0,1)$. From this uniform distribution, we can apply functions on $U$ in order to form non-uniform distributions with a given cumulative distribution functions $F(X)$.
+\begin{theorem}
+If $F$ is an arbitrary cumulative distribution function and $U$ is uniform on $[\,0,1\,]$ then the random variable $X$, defined by $X = F^-(U)$, where $F^-(y) = \min\{\, x \ssep F(x)\ge y \,\}$, has a cumulative distribution function of $F(x)$. 
+\end{theorem}
+
+\begin{proof}
+Note that,$ \for\all U < F(x)$, we have that $X \leq x$ by applying the inverse function $F^-$ to both sides. Now, by applying $F$ to both sides of $X \leq x$, we have $U \leq F(x),\:\for\all x$. So we can say
+\[
+    [U < F(x)] \subseteq [X \leq x] \subseteq [U \leq F(x)],\:\for\all x
+\]
+Taking probabilities of the across the equation we have, 
+\[
+    P[U < F(x)] \leq P[X \leq x] \leq P[U \leq F(x)],\:\for\all x
+\]
+Note that $P[U < F(x)] = P[U \leq F(x)] = F(x)$ since $U$ is uniform and continuous. Thus,
+\[
+    F(x) \leq P(X \leq x) \leq F(x)
+\]
+so $P[X \leq x] = F(x),\:\for\all x$, as required.
+\end{proof}
+
+\begin{example}
+Suppose we have a random variable $U$ that is uniform on $U[\,0,1\,]$ and we want to generate a random variable $X$ with exponential distribution. We have that the cumulative distribution function of $X$ is $F_{\scriptscriptstyle X}(x) = 1 - e^{-\rate x}$ for some $\rate$.
+Since $F_{\scriptscriptstyle X}(x)$ is a continuous, strictly increasing function for $x>0$, let~$y=F_{\scriptscriptstyle X}(x)$. Now,
+\begin{align*}
+    y&=1-e^{-\rate x} \\
+    1-y&=e^{-\rate x} \\
+    \ln(1-y)&=-\rate x \\
+    x&=\frac{-\ln(1-y)}{\rate}
+\end{align*}
+So $F^{-1}_{\scriptscriptstyle X}(y) = \displaystyle\frac{-\ln(1-y)}{\lambda}$.
+
+Thus, by Theorem 3.1.1, $X=F^{-1}_{\scriptscriptstyle X}(U)$ has cumulative distribution function $F_{\scriptscriptstyle X}(x)$.
+\[
+    X = -\frac{1}{\lambda}\ln(1-U)
+\]
+Now, to find $f_{\scriptscriptstyle X}(x)$, the probability density function of X, we differentiate the cumulative distribution function. So,
+\[
+    f_{\scriptscriptstyle X}(x) = \frac{1 - y}{\lambda}
+\]    
+\end{example}
+\pagebreak[3]
+\section{Normal Distribution}
+A random variable $X$ has a normal distribution if it has probability density function of the form
+\[
+    f(x) = \frac{1}{\sigma\sqrt{2\pi}}
+    e^{-\textstyle\frac{1}{2} \left(\frac{x - \mean}{\sigma}\right)^2}
+    ,\:\for x \in \sR
+\]
+where $\mean \in \sR$ and $\theta>0$ are parameters. It turns out that $E(X) = \mean$ and $\var(X) = \sigma^2$. \\
+$X \dist N(\mean,\sigma^2)$ where $X$ has expected value $\mean$ and variance $\sigma^2$.
+\medskip
+
+The Normal distribution is the most widely used distribution in probability and statistics. Physical
+processes leading to the Normal distribution exist but are a little complicated to describe.
+\smallskip\par
+The graph of the probability density function $f(x)$ is symmetric about the line $x = \mean$. The shape of the graph is often termed a ``bell shape'' or ``bell curve''.
+\pgfmathdeclarefunction{gauss}{2}{%
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    no markers, domain=-4:4, samples=300,
+    width=14cm, height=10cm,
+	axis lines = left,
+    xlabel = $X$,
+    ylabel = {$f(x)$},
+	xmin=-9, xmax=9,
+    ymin=0, ymax=0.25,
+    ytick=\empty, xtick={-10,-8,-6,-4,-2,0,2,4,6,8,10},
+    xticklabels={, $\mean-4\sigma$, $\mean-3\sigma$, $\mean-2\sigma$, $\mean-\sigma$, $\mean$, $\mean+\sigma$, $\mean+2\sigma$, $\mean+3\sigma$, $\mean+4\sigma$},
+]
+\addplot [very thick,cyan!50!black, domain=-9:9] {gauss(0,2)};
+\end{axis}
+\draw [dashed] (6.21, 0) -- (6.21, 6.7);
+\draw [dashed] (4.83, 0) -- (4.83, 4.05);
+\draw [dashed] (7.59, 0) -- (7.59, 4.05);
+\draw [dashed] (3.45, 0) -- (3.45, 0.95);
+\draw [dashed] (8.97, 0) -- (8.95, 0.95);
+\draw [dashed] (2.07, 0) -- (2.075, 0.085);
+\draw [dashed] (10.35, 0) -- (10.325, 0.085);
+\end{tikzpicture}
+\end{center}
+
+The \textbf{cumulative distribution function} of a Normal Distribution is 
+\[
+    F(x) = P(X\le x) = \int_{-\infty}^x \frac{1}{\sigma\sqrt{2\pi}}
+    e^{-\textstyle\frac{1}{2}\left(\frac{y - \mean}{\sigma}\right)^2} \d{y}
+\]
+This integral cannot be given a simple mathematical expression so numerical methods are used to compute its value for given $x,\mean,\sigma$. Before computers could solve such problems, tables of probabilities $F(x)$ where created by numerical integration. Only the table of the standard normal distribution, $N(0,1)$, is required to solve for $F(x)$ for all $\mean,\sigma$, since with a change of variable, the c.d.f. any normal distribution can be related to that of the standard normal distribution.
+\begin{theorem}
+Let $X \dist N(\mean,\sigma^2)$. If $Z = \frac{X - \mean}{\sigma}$, then $Z \dist N(0,1)$ and
+\[
+    P(X \le x) = P\left(Z \le \frac{x - \mean}{\sigma}\right)
+\]
+\end{theorem}
+\begin{proof}
+Let $X \dist N(\mean,\sigma^2)$.
+\begin{align*}
+    P(X\le x) 
+    &= \int_{-\infty}^x \frac{1}{\sigma\sqrt{2\pi}}
+        e^{-\textstyle\frac{1}{2}\left(\frac{y - \mean}{\sigma}\right)^2} \d{y} \\
+    \left(\text{Let }z = \frac{y-\mean}{\sigma}\right)\hspace{12pt} 
+    &= \int_{-\infty}^{\frac{x - \mean}{\sigma}} \frac{1}{\sqrt{2\pi}}
+        e^{-\textstyle\frac{1}{2}z^2} dz \\[8pt plus 2pt minus 4pt]
+    &= P\left(Z\le\textstyle\frac{x - \mean}{\sigma}\right)
+\end{align*}
+\end{proof}
