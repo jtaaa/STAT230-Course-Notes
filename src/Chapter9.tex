@@ -246,7 +246,7 @@ where $\stddev$ is the standard deviation of $X$. It is the average squared devi
 \smallskip\par
 The definition and formula above is useful in understanding the variance's importance but it can be difficult to use to actually calculate the variance. Here are a few other useful formulas for calculating the variance of a random variable:
 \begin{align}
-    \var(X) &= E(X^2) - [E(X)]^2 = E(X^2) - \mean^2 \\
+    \var(X) &= E(X^2) - [E(X)]^2 = E(X^2) - \mean^2 \label{eqn: variance alt formula}\\
     \var(X) &= E[X(X-1)] + E(X) - [E(X)]^2 = E[X(X-1)] + \mean - \mean^2
 \end{align}
 \begin{theory}{Derivation of Alternative Formulas}
@@ -265,5 +265,21 @@ Now note that $X^2 = X(X-1) + X$, so we have
     &= E[X(X-1)] + E(X) -\mean^2 \\
     &= E[X(X-1)] + \mean -\mean^2
 \end{align*}
-
 \end{theory}
+\subsection*{Properties of Variance}
+\begin{theorem}
+For constants $a$ and~$b$,
+\[
+    \var[aX + b] = a^2\var(X)
+\]
+\end{theorem}
+\begin{proof}
+\begin{align*}
+    \var[aX + b]
+    &= E\bigl[(aX + b)^2\bigr] - \bigl[E(aX + b)\bigr]^2,\hspace{12pt}\text{\big (by equation \eqref{eqn: variance alt formula}\big)} \\
+    &= E\bigl[a^2 X^2 + 2abX + b^2\bigr] - \bigl[aE(X) + b\bigr]^2 \\
+    &= a^2 E(X^2) + 2ab E(X) + b^2 - a^2[E(X)]^2 - 2abE(X) - b^2 \\
+    &= a^2 \left(E(X^2) - [E(X)]^2\right) \\
+    &= a^2 \var(X)
+\end{align*}
+\end{proof}
