@@ -64,7 +64,7 @@ Hence \[
 Suppose we have an experiment with two distinct outcomes, success and failure, with the probability of a success being $p$ and a failure being $(1-p)$. The experiment is repeated $n$ times independently (these are called trials). Let the random variable $X$ be the number of successes obtained. $X$ has a binomial distribution. \\
 $X\dist\bino(n,p)$
 \[
-    f(x) = P(X = x) = \displaystyle\binom{n}{x}p^x (1-p)^{n-x},\:\for x=1,\ldots,n
+    f(x) = P(X = x) = \displaystyle\binom{n}{x}p^x (1-p)^{n-x},\:\for x=0,1,2,\ldots,n
 \]
 \begin{theory}{Derivation of Probability Function}
 Since there are $n$ positions in which to put the $x$ successes there are $\binom{n}{x}$ unique arrangements of successes and failures that satisfy ``$X = x$''. Each of these arrangements has probability $p^x (1-p)^{n-x}$ since the probability of obtaining $x$ successes is $p^x$ and the probability of obtaining $n-x$ failures is $(1-p)^{n-x}$. So the probability that $X = x$, that is that any of the arrangements occur, is the sum of the probability of each unique arrangement, $\binom{n}{x}p^x (1-p)^{n-x}$.
