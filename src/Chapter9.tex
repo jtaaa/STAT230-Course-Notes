@@ -297,11 +297,18 @@ A useful property of the standard deviation is that it is expressed in the same 
 \section{Expected Value and Variance of Discrete Distributions}
 We can derive the expected value and variance of a random variables from its probability distribution. In this section we will apply what we have learned about mean and~variance to each of the discrete distributions we have previously encountered.
 \subsection*{Binomial Distribution}
-The expected value of a random variable~$X$ with $X \dist \bino(n.p)$ is
+Let $X$ be a random variable such that $X \dist \bino(n,p)$.
+\par\medskip\noindent
+The expected value of $X$ is
 \[
     \mean = E(X) = np
 \]
-\begin{theory}{Derivation of Expected Value of Binomial Distribution}
+The variance of $X$ is
+\[
+    \stddev^2 = \var(X) = np(1-p)
+\]
+\pagebreak[3]
+\begin{theory}{Derivation of Expected Value and Variance of Binomial Distribution}
 The probability function of a \rv~$X$ with $X \dist \bino(n,p)$ is
 \[
     P(X = x) = f(x) = \binom{n}{x}p^x(1-p)^{n-x}
@@ -311,7 +318,7 @@ So we will use this to find $E(X)$. We have
     E(X) = \sum_{x = 0}^{n} xf(x) 
     &= \sum_{x = 0}^{n} x \binom{n}{x}p^x(1-p)^{n-x} \\
     &= \sum_{x = 0}^{n} x\left(\frac{n!}{x!\,(n-x)!}\right) p^x (1-p)^{n-x} \\
-    \text{(when $x = 0$, the summation}&\text{ term is also 0, so we can ignore it)}\\
+    \text{(when $x = 0$, the summation}&\text{ term is also 0, so we can ignore it)} \\
     &= \sum_{x = 1}^{n} \frac{n(n-1)!}{(x-1)!\,(n-x)!}\,p^x (1-p)^{n-x} \\
     &= \sum_{x = 1}^{n} \frac{n(n-1)!}{(x-1)!\,[(n-1)-(x-1)]!} \,pp^{x-1} (1-p)^{(n-1)-(x-1)} \\
     &= np(1-p)^{n-1} \sum_{x = 1}^{n} \binom{n-1}{x-1} \left(\frac{p}{1-p}\right)^{x-1} \\
@@ -322,4 +329,20 @@ So we will use this to find $E(X)$. We have
     &= np (1-p)^{n-1} \frac{(1-p+p)^{n-1}}{(1-p)^{n-1}} \\
     &= np
 \end{align*}
+Now to find $\var(X)$ we consider $E[X(X-1)]$. We will use the same technique as above
+\begin{align*}
+    E[X(X-1)] = \sum_{x = 0}^{n} x(x-1)f(x)
+    &= \sum_{x = 0}^{n} x(x-1) \binom{n}{x}p^x(1-p)^{n-x} \\
+    \text{(when $x = 0$ or $x = 1$, the summation}&\text{ terms are also 0, so we can ignore them)} \\
+    &= \sum_{x = 2}^{n} \frac{n(n-1)(n-2)!}{(x-2)!\,[(n-2)-(x-2)]!} \,p^2p^{x-2} (1-p)^{(n-2)-(x-2)} \\
+    &= n(n-1)p^2(1-p)^{n-2} \sum_{x = 2}^{n} \binom{n-2}{x-2} \left(\frac{p}{1-p}\right)^{x-2} \\
+    \text{Let $y = x - 2$} \qquad
+    &= n(n-1)p^2(1-p)^{n-2} \sum_{y = 0}^{n - 2} \binom{n-2}{y} \left(\frac{p}{1-p}\right)^{y} \\
+    \text{(by Binomial Theorem)} \qquad &= n(n-1)p^2(1-p)^{n-2} \left(1 + \frac{p}{1-p}\right)^{n-2} \\
+    &= n(n-1)p^2
+\end{align*}
+So we have
+\[
+    \var(X) = E[X(X-1)] + \mean - \mean^2 = n(n-1)p^2 + np - (np)^2 = np(1-p)
+\]
 \end{theory}
