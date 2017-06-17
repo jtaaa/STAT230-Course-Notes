@@ -328,8 +328,8 @@ The probability function of a \rv~$X$ with $X \dist \bino(n,p)$ is
 So we will use this to find $E(X)$. We have
 \begin{align*}
     E(X) = \sum_{x = 0}^{n} xf(x) 
-    &= \sum_{x = 0}^{n} x \binom{n}{x}p^x(1-p)^{n-x} \\
-    &= \sum_{x = 0}^{n} x\left(\frac{n!}{x!\,(n-x)!}\right) p^x (1-p)^{n-x} \\
+    &= \sum_{x = 0}^{n} x \binom{n}{x}p^x(1-p)^{n-x}
+    = \sum_{x = 0}^{n} x\left(\frac{n!}{x!\,(n-x)!}\right) p^x (1-p)^{n-x} \\
     \text{(when $x = 0$, the summation}&\text{ term is also 0, so we can ignore it)} \\
     &= \sum_{x = 1}^{n} \frac{n(n-1)!}{(x-1)!\,(n-x)!}\,p^x (1-p)^{n-x} \\
     &= \sum_{x = 1}^{n} \frac{n(n-1)!}{(x-1)!\,[(n-1)-(x-1)]!} \,pp^{x-1} (1-p)^{(n-1)-(x-1)} \\
@@ -338,8 +338,8 @@ So we will use this to find $E(X)$. We have
     &= np(1-p)^{n-1} \sum_{y = 0}^{n-1} \binom{n-1}{y} \left(\frac{p}{1-p}\right)^{y} \\
     \text{(by Binomial Theorem)} \qquad
     &= np(1-p)^{n-1} \left(1 + \frac{p}{1-p}\right)^{n-1} \\
-    &= np (1-p)^{n-1} \frac{(1-p+p)^{n-1}}{(1-p)^{n-1}} \\
-    &= np
+    &= np (1-p)^{n-1} \frac{(1-p+p)^{n-1}}{(1-p)^{n-1}}
+    = np
 \end{align*}
 Now to find $\var(X)$ we consider $E[X(X-1)]$. We will use the same technique as above
 \begin{align*}
