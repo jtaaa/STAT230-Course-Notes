@@ -358,3 +358,20 @@ So we have
     \var(X) = E[X(X-1)] + \mean - \mean^2 = n(n-1)p^2 + np - (np)^2 = np(1-p)
 \]
 \end{theory}
+\begin{theory}{Derivation of Expected Value and Variance of Poisson Distribution}
+The probability function of a \rv~$X$ with $X \dist \pois(\mean)$ is
+\[
+    P(X = x) = f(x) = \frac{\mean^x e^{-\mean}}{x!}
+\]
+So we will use this to find $E(X)$. We have
+\begin{align*}
+    E(X) = \sum_{x = 0}^{\infty} xf(x) 
+    &= \sum_{x = 0}^{\infty} x \frac{\mean^x e^{-\mean}}{x!} \\
+    \text{(when $x = 0$, the summation}&\text{ term is also 0, so we can ignore it)} \\
+    &= \mean e^{-\mean} \sum_{x = 1}^{\infty} \frac{\mean^{x-1}}{(x-1)!} \\
+    \text{Let $y = x - 1$} \qquad
+    &= \mean e^{-\mean} \sum_{y = 0}^{\infty} \frac{\mean^y}{y!} \\
+    \biggl(\text{recall } e^x = \sum_{y = 0}^{\infty}\frac{\mean^y}{y!}\biggr) \qquad
+    &= \mean e^{-\mean} e^{\mean} = \mean
+\end{align*}
+\end{theory}
