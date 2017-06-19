@@ -366,7 +366,7 @@ The probability function of a \rv~$X$ with $X \dist \pois(\mean)$ is
 So we will use this to find $E(X)$. We have
 \begin{align*}
     E(X) = \sum_{x = 0}^{\infty} xf(x) 
-    &= \sum_{x = 0}^{\infty} x \frac{\mean^x e^{-\mean}}{x!} \\
+    &= \sum_{x = 0}^{\infty} x\,\frac{\mean^x e^{-\mean}}{x!} \\
     \text{(when $x = 0$, the summation}&\text{ term is also 0, so we can ignore it)} \\
     &= \mean e^{-\mean} \sum_{x = 1}^{\infty} \frac{\mean^{x-1}}{(x-1)!} \\
     \text{Let $y = x - 1$} \qquad
@@ -374,4 +374,18 @@ So we will use this to find $E(X)$. We have
     \biggl(\text{recall } e^x = \sum_{y = 0}^{\infty}\frac{\mean^y}{y!}\biggr) \qquad
     &= \mean e^{-\mean} e^{\mean} = \mean
 \end{align*}
+Now to find $\var(X)$ we consider $E[X(X-1)]$. We will use the same technique as above
+\begin{align*}
+    E[X(X-1)] = \sum_{x = 0}^{n} x(x-1)f(x)
+    &= \sum_{x = 0}^{\infty} x(x-1) \frac{\mean^x e^{-\mean}}{x!} \\
+    \text{(when $x = 0$ or $x = 1$, the summation}&\text{ terms are also 0, so we can ignore them)} \\
+    &= \mean^2  e^{-\mean} \sum_{x = 2}^{\infty} \frac{\mean^{x-2}}{(x-2)!} \\
+    \text{Let $y = x - 2$} \qquad
+    &= \mean^2  e^{-\mean} \sum_{y = 0}^{\infty} \frac{\mean^y}{y!} \\
+    &= \mean^2 e^{-\mean} e^{\mean} = \mean^2
+\end{align*}
+So we have
+\[
+    \var(X) = E[X(X-1)] + \mean - \mean^2 = \mean^2 + \mean - \mean^2 = \mean
+\]
 \end{theory}
