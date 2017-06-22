@@ -10,17 +10,17 @@ If $F$ is an arbitrary cumulative distribution function and $U$ is uniform on $[
 \begin{proof}
 Note that,$ \for\all U < F(x)$, we have that $X \leq x$ by applying the inverse function $F^-$ to both sides. Now, by applying $F$ to both sides of $X \leq x$, we have $U \leq F(x),\:\for\all x$. So we can say
 \[
-    [U < F(x)] \subseteq [X \leq x] \subseteq [U \leq F(x)],\:\for\all x
+    [\,U < F(x)\,] \subseteq [\,X \leq x\,] \subseteq [\,U \leq F(x)\,],\:\for\all x
 \]
 Taking probabilities of the across the equation we have, 
 \[
-    P[U < F(x)] \leq P[X \leq x] \leq P[U \leq F(x)],\:\for\all x
+    P[\,U < F(x)\,] \leq P[\,X \leq x\,] \leq P[\,U \leq F(x)\,],\:\for\all x
 \]
-Note that $P[U < F(x)] = P[U \leq F(x)] = F(x)$ since $U$ is uniform and continuous. Thus,
+Note that $P[\,U < F(x)\,] = P[U \leq F(x)\,] = F(x)$ since $U$ is uniform and continuous. Thus,
 \[
     F(x) \leq P(X \leq x) \leq F(x)
 \]
-so $P[X \leq x] = F(x),\:\for\all x$, as required.
+so $P[\,X \leq x\,] = F(x),\:\for\all x$, as required.
 \end{proof}
 
 \begin{example}
@@ -47,7 +47,7 @@ Now, to find $f_{\scriptscriptstyle X}(x)$, the probability density function of 
 \section{Normal Distribution}
 A random variable $X$ has a normal distribution if it has probability density function of the form
 \[
-    f(x) = \frac{1}{\sigma\sqrt{2\pi}}
+    f(x) = \frac{1}{\sigma\sqrt{2\pi}}\,
     e^{-\textstyle\frac{1}{2} \left(\frac{x - \mean}{\sigma}\right)^2}
     ,\:\for x \in \sR
 \]
@@ -89,7 +89,7 @@ The graph of the probability density function $f(x)$ is symmetric about the line
 
 The \textbf{cumulative distribution function} of a Normal Distribution is 
 \[
-    F(x) = P(X\le x) = \int_{-\infty}^x \frac{1}{\sigma\sqrt{2\pi}}
+    F(x) = P(X\le x) = \int_{-\infty}^x \frac{1}{\sigma\sqrt{2\pi}}\,
     e^{-\textstyle\frac{1}{2}\left(\frac{y - \mean}{\sigma}\right)^2} \d{y}
 \]
 This integral cannot be given a simple mathematical expression so numerical methods are used to compute its value for given $x,\mean,\sigma$. Before computers could solve such problems, tables of probabilities $F(x)$ where created by numerical integration. Only the table of the standard normal distribution, $N(0,1)$, is required to solve for $F(x)$ for all $\mean,\sigma$, since with a change of variable, the c.d.f. any normal distribution can be related to that of the standard normal distribution.
@@ -103,10 +103,10 @@ Let $X \dist N(\mean,\sigma^2)$. If $Z = \frac{X - \mean}{\sigma}$, then $Z \dis
 Let $X \dist N(\mean,\sigma^2)$.
 \begin{align*}
     P(X\le x) 
-    &= \int_{-\infty}^x \frac{1}{\sigma\sqrt{2\pi}}
+    &= \int_{-\infty}^x \frac{1}{\sigma\sqrt{2\pi}}\,
         e^{-\textstyle\frac{1}{2}\left(\frac{y - \mean}{\sigma}\right)^2} \d{y} \\
     \left(\text{Let }z = \frac{y-\mean}{\sigma}\right)\hspace{12pt} 
-    &= \int_{-\infty}^{\frac{x - \mean}{\sigma}} \frac{1}{\sqrt{2\pi}}
+    &= \int_{-\infty}^{\frac{x - \mean}{\sigma}} \frac{1}{\sqrt{2\pi}}\,
         e^{-\textstyle\frac{1}{2}z^2} dz \\[8pt plus 2pt minus 4pt]
     &= P\left(Z\le\textstyle\frac{x - \mean}{\sigma}\right)
 \end{align*}
