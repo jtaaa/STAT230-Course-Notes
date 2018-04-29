@@ -244,7 +244,7 @@ which resolves to
 \[
     f_t(0) = Ce^{-\rate t}
 \]
-Note for an interval of length 0, the probability of 0 zero events must be 1. So the constant $C$ must be 1. Hence, we have
+Note for an interval of length 0, the probability of zero events must be 1. So the constant $C$ must be 1. Hence, we have
 \[
     f_t(0) = e^{-\rate t}
 \]
@@ -272,7 +272,7 @@ Integrating both sides we have
 \[
     e^{\rate t} f_t(1) = \rate t + C
 \]
-Note for an interval of length 0, the probability of 0 zero events must be 1. So the constant $C$ must be 1. Hence, we have
+Note for an interval of length 0, the probability of one event must be 0. So the constant $C$ must be 0. Hence, we have
 \[
     f_t(1) = \rate t e^{-\rate t}
 \]
@@ -289,7 +289,7 @@ We have already shown that our hypothesis holds for $x = 0$ and $x = 1$. Now we 
     e^{\rate t} f_t(x+1) &= \int \frac{\rate^{x+1}}{x!} t^x \d{t} 
     = \frac{\rate^{x+1}}{x!}\frac{t^{x+1}}{(x+1)} + C
 \end{align*}
-Again using the boundary condition, with an interval of length 0, we have that $C$ must be 1. Thus, we have
+Again using the boundary condition, with an interval of length 0, we have that $C$ must be 0 for $x>0$. Thus, we have
 \[
     f_t(x+1) = \frac{(\rate t)^{x+1} e^{-\rate t}}{(x+1)!}
 \]
